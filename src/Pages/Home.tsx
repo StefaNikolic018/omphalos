@@ -1,15 +1,16 @@
 import React from 'react';
-import Sidebar from '../Components/Sidebar';
 import { Outlet } from 'react-router-dom';
-import bg from './../assets/background.jpg';
 import Snowfall from 'react-snowfall';
+
+import Sidebar from '../Components/Sidebar';
+import bg from './../assets/background.jpg';
 import useGlobalContext from '../Context/Global/useGlobalContext';
 
 export default function Home() {
   // TODO: Conditional rendering for Login and other parts
   const { dark } = useGlobalContext();
   return (
-    <div className='flex flex-row'>
+    <div className='flex flex-row home dark:home-black'>
       <Sidebar />
       <div className='relative w-full'>
         <img
