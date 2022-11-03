@@ -1,14 +1,37 @@
-import Content from '../Shared/Content';
 import React from 'react';
-import useGlobalContext from './../../Context/Global/useGlobalContext';
+import { Link } from 'react-router-dom';
+import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
+import useFirebaseContext from '../../Context/Firebase/useFirebaseContext';
+import { FcGoogle } from 'react-icons/fc'
+
+import ErrorMessage from '../Shared/Form/ErrorMessage';
 
 export default function Login() {
-  const { dark } = useGlobalContext();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors, isValid },
+  } = useForm({
+    mode: 'onChange',
+    delayError: 500,
+  });
+  const { user, login, getTexts, texts, googleLogin } = useFirebaseContext();
+  // getTexts();
+  console.log('eve ga korisnik: ', user);
+  console.log('eve gi textovi: ', texts);
+  // TODO: CLEAN CODE AND REFACTOR ALL THE THINGS THAT ARE NOT WORKING, FIND A WAY TO FIX DATA FETCHING WITH RIGHT PERMISSIONS
+  // - LOOK AT THE DEVED AND NET NINJA TUTS TO GET A GRASP OF HOW THINGS ARE WORKING
+  const onSubmit: SubmitHandler<FieldValues> = (data) => {
+    login(data.email, data.password);
+    reset();
+    alert(`EVE GA: ${user}`);
+  };
   return (
     <div className='dark:text-neutral-100 text-zinc-900 flex flex-col justify-center items-center w-full min-h-screen z-10'>
-      <h1 className='font-bold text-3xl mb-2 animate-bounce'>LOGIN</h1>
-      <div className='py-28 px-24 rounded-full transition-all duration-500 z-10 bg-neutral-100 dark:bg-black box-shadow-custom dark:box-shadow-custom-dark flex flex-col gap-10 border-2 dark:border-neutral-300 border-zinc-900 relative'>
-        {/* <svg
+      <h1 className='font-bold text-3xl -mb-10 animate-bounce'>LOGIN</h1>
+      <div className=' z-10 flex flex-col relative w-[40%]'>
+        <svg
           version='1.1'
           xmlns='http://www.w3.org/2000/svg'
           viewBox='0 0 500 500'
@@ -17,6 +40,7 @@ export default function Login() {
           filter='blur(0px)'
           style={{ opacity: ' 1' }}
           transform='rotate(0)'
+          className='flex justify-center items-center '
         >
           {' '}
           <defs>
@@ -49,54 +73,85 @@ export default function Login() {
               values='M400,314Q352,378,277,420Q202,462,143,396Q84,330,66.5,241.5Q49,153,125.5,97.5Q202,42,298.5,55Q395,68,421.5,159Q448,250,400,314Z;M429.79847,339.54154Q392.67727,429.08308,294.97368,455.00137Q197.27008,480.91966,143.94598,403.56786Q90.62188,326.21607,83.52769,246.22992Q76.43351,166.24376,136.8518,92.77008Q197.27008,19.29641,287.1482,55Q377.02632,90.70359,421.97299,170.3518Q466.91966,250,429.79847,339.54154Z;M388.67097,319.27849Q360.55699,388.55699,291.23441,379.72688Q221.91183,370.89678,145.00645,354.28387Q68.10108,337.67097,71.32903,251.33548Q74.55699,165,142.39247,119.95591Q210.22796,74.91183,286.12043,91.61398Q362.0129,108.31613,389.39892,179.15806Q416.78495,250,388.67097,319.27849Z;M411.71818,339.87391Q393.61186,429.74783,302.23794,426.16285Q210.86403,422.57787,122.32727,388.31581Q33.79051,354.05375,61.55534,263.35692Q89.32016,172.66008,145.95613,107.46324Q202.59209,42.2664,289.95613,66.5581Q377.32016,90.8498,403.57233,170.4249Q429.82451,250,411.71818,339.87391Z;M400,314Q352,378,277,420Q202,462,143,396Q84,330,66.5,241.5Q49,153,125.5,97.5Q202,42,298.5,55Q395,68,421.5,159Q448,250,400,314Z'
             ></animate>
           </path>
-        </svg> */}
-        <input
-          type='text'
-          className='border-2 border-zinc-900 dark:text-zinc-800 py-2 px-5 text-zinc-800  dark:border-neutral-100 dark:bg-zinc-900 hover:scale-x-105 rounded-xl text-xl transition-all duration-150 ease-linear  
+        </svg>
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          className='absolute top-1/3 left-1/3 gap-5 flex flex-col justify-center items-center'
+        >
+          <input
+            type='email'
+            className='border-2 border-zinc-900 dark:text-zinc-800 py-2 px-5 text-zinc-800  dark:border-neutral-100 dark:bg-zinc-900 hover:scale-x-105 rounded-xl text-xl transition-all duration-150 ease-linear  
           hover:opacity-80
           focus:border-orange-400
           invalid:border-pink-500 invalid:text-pink-600
           focus:invalid:border-pink-500 focus:invalid:ring-pink-500'
-          placeholder='Username'
-        />
-        <input
-          type='password'
-          className='border-2 border-zinc-900 dark:text-zinc-800 py-2 px-5 text-zinc-800  
+            placeholder='Email'
+            {...register('email', {
+              required: 'Please enter your Email address',
+              minLength: {
+                value: 10,
+                message: 'Minimum 10 characters!',
+              },
+            })}
+          />
+          <ErrorMessage error={errors.email} />
+          <input
+            type='password'
+            className='border-2 border-zinc-900 dark:text-zinc-800 py-2 px-5 text-zinc-800  
           dark:bg-zinc-900 dark:border-neutral-100 hover:scale-x-105 rounded-xl text-xl transition-all duration-150 ease-linear  
           hover:opacity-80
           focus:border-orange-400
           invalid:border-pink-500 invalid:text-pink-600
           focus:invalid:border-pink-500 focus:invalid:ring-pink-500'
-          placeholder='Password'
-        />
-        <div className='flex  flex-row justify-center items-center gap-5'>
-          <a
-            href='#_'
-            className='relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-xl'
-          >
-            <span
-              className='w-full h-full bg-gradient-to-br from-[#ff8a0591] via-[#a48a2287] to-[#7272727c] group-hover:from-[#72727288] group-hover:via-[#a48a2282] group-hover:to-[#ff8a0582]
+            placeholder='Password'
+            {...register('password', {
+              required: 'Please enter your password',
+              minLength: {
+                value: 6,
+                message: 'Minimum 6 characters!',
+              },
+            })}
+          />
+          <ErrorMessage error={errors.password} />
+          <div className="flex flex-col justify-center items-center gap-3">
+            <div className='flex  flex-row justify-center items-center gap-5'>
+              <Link
+                to='/register'
+                className='relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-xl'
+              >
+                <span
+                  className='w-full h-full bg-gradient-to-br from-[#ff8a0591] via-[#a48a2287] to-[#7272727c] group-hover:from-[#72727288] group-hover:via-[#a48a2282] group-hover:to-[#ff8a0582]
             dark:from-[#ff8a0524] dark:via-[#a48a2224] dark:to-[#7272722f] dark:group-hover:from-[#7272722f] dark:group-hover:via-[#a48a2224] dark:group-hover:to-[#ff8a0524]
             absolute'
-            ></span>
-            <span className='relative px-5 py-1 transition-all ease-out bg-white  dark:bg-black  rounded-xl group-hover:bg-opacity-0 duration-400'>
-              <span className='relative text-black dark:text-white'>
-                Sign up
-              </span>
-            </span>
-          </a>
-          <a
-            href='#_'
-            className='relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-xl '
-          >
-            <span className='w-full h-full bg-gradient-to-br from-[#ff8a05ed] via-[#a45c22] to-[#7272729a] group-hover:from-[#727272e8] group-hover:via-[#a45c22] group-hover:to-[#ff8a05e7] absolute'></span>
-            <span className='relative px-5 py-1 transition-all ease-out bg-white  dark:bg-black  rounded-xl group-hover:bg-opacity-0 duration-400'>
-              <span className='relative text-black dark:text-white '>
-                Log in
-              </span>
-            </span>
-          </a>
-        </div>
+                ></span>
+                <span className='relative px-5 py-1 transition-all ease-out bg-white  dark:bg-black  rounded-xl group-hover:bg-opacity-0 duration-400'>
+                  <span className='relative text-black dark:text-white'>
+                    Sign up
+                  </span>
+                </span>
+              </Link>
+              <button
+                type='submit'
+                className={`${isValid ? 'opacity-1' : 'opacity-50'
+                  } relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-xl`}
+                disabled={!isValid}
+              >
+                <span className='w-full h-full bg-gradient-to-br from-[#ff8a05ed] via-[#a45c22] to-[#7272729a] group-hover:from-[#727272e8] group-hover:via-[#a45c22] group-hover:to-[#ff8a05e7] absolute'></span>
+                <span className='relative px-5 py-1 transition-all ease-out bg-white  dark:bg-black  rounded-xl group-hover:bg-opacity-0 duration-400'>
+                  <span className='relative text-black dark:text-white '>
+                    Log in
+                  </span>
+                </span>
+              </button>
+            </div>
+            <div className="flex justify-center items-center w-full rounded-xl bg-[#ffffffcc] hover:bg-white transition-all duration-150 shadow-xl cursor-pointer py-2" onClick={() => googleLogin()}>
+              <FcGoogle className='text-3xl ' />
+            </div>
+            <div className="flex justify-center items-center w-full rounded-xl bg-[#ffffffcc] hover:bg-white transition-all duration-150 shadow-xl cursor-pointer py-2" onClick={() => getTexts()}>
+              AJDE
+            </div>
+          </div>
+        </form>
       </div>
     </div>
   );

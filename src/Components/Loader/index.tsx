@@ -6,14 +6,16 @@ import Marquee from './Marquee';
 
 import logo from '../../assets/logo.png';
 import useGlobalContext from '../../Context/Global/useGlobalContext';
+import { storageInsert } from '../../utils/storage';
 
 export default function index() {
   const navigate = useNavigate();
-  const { dark, setDark } = useGlobalContext();
+  const { dark, setDark, setIsInit } = useGlobalContext();
 
   const closeIntro = useCallback(() => {
-    localStorage.setItem('mode', dark ? 'dark' : 'neutral-100');
+    storageInsert('mode', dark ? 'dark' : 'neutral-100');
     navigate('/login');
+    setIsInit(true);
   }, [dark]);
 
   return (

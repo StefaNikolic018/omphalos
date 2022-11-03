@@ -49,7 +49,7 @@ const renderNav = (items: navItem[]) => {
 
 export default function index() {
   return (
-    <div className='flex flex-col justify-between items-center h-screen p-3 w-30 bg-neutral-500 dark:bg-zinc-900 dark:text-neutral-100 text-zinc-900 shadow-md dark:shadow-neutral-100 shadow-zinc-900'>
+    <div className='flex flex-col justify-between items-center h-screen p-3 w-30 bg-neutral-100 dark:bg-zinc-900 dark:text-neutral-100 text-zinc-900 shadow-md dark:shadow-neutral-100 shadow-zinc-900'>
       <div className='space-y-5'>
         <div className='flex items-center justify-between rounded-3xl bg-gray-200 dark:bg-zinc-800 p-2 hover:rounded-xl transition-all duration-200 ease-liner dark:hover:bg-zinc-700 border border-y-transparent border-x-orange-400'>
           <h2>

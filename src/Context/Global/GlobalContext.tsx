@@ -6,13 +6,18 @@ import React, {
   Dispatch,
   ReactNode,
 } from 'react';
+import { storageSelect } from '../../utils/storage';
 
 type GlobalContextType = {
+  isInit: boolean;
+  setIsInit: Dispatch<SetStateAction<boolean>>;
   dark: boolean;
   setDark: Dispatch<SetStateAction<boolean>>;
 };
 
 export const GlobalContext = createContext<GlobalContextType>({
+  isInit: false,
+  setIsInit: () => {},
   dark: true,
   setDark: () => {},
 });
@@ -24,18 +29,21 @@ export default function GlobalContextProvider({
 }) {
   // REFACTOR THIS CODE INTO SOME CUSTOM HOOK
   const [dark, setDark] = useState(
-    localStorage.getItem('mode')
-      ? localStorage.getItem('mode') === 'dark'
+    storageSelect('mode')
+      ? storageSelect('mode') === 'dark'
         ? true
         : false
       : true
   );
 
+  const [isInit, setIsInit] = useState(!!storageSelect('mode'));
+
   useEffect(() => {
-    if (localStorage.getItem('mode') !== null) {
-      setDark(localStorage.getItem('mode') === 'dark');
+    if (storageSelect('mode') !== null) {
+      setDark(storageSelect('mode') === 'dark');
+      setIsInit(true);
     }
-  }, [localStorage.getItem('mode')]);
+  }, []);
 
   useEffect(() => {
     const body = window.document.body.classList;
@@ -43,7 +51,7 @@ export default function GlobalContextProvider({
   }, [dark]);
 
   return (
-    <GlobalContext.Provider value={{ dark, setDark }}>
+    <GlobalContext.Provider value={{ dark, setDark, isInit, setIsInit }}>
       {children}
     </GlobalContext.Provider>
   );
