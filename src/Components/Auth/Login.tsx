@@ -1,10 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
-import useFirebaseContext from '../../Context/Firebase/useFirebaseContext';
 import { FcGoogle } from 'react-icons/fc'
+import { Link, useNavigate } from 'react-router-dom';
 
 import ErrorMessage from '../Shared/Form/ErrorMessage';
+import { useForm, SubmitHandler, FieldValues } from 'react-hook-form';
+import useFirebaseContext from '../../Context/Firebase/useFirebaseContext';
+
 
 export default function Login() {
   const {
@@ -16,16 +17,11 @@ export default function Login() {
     mode: 'onChange',
     delayError: 500,
   });
-  const { user, login, getTexts, texts, googleLogin } = useFirebaseContext();
-  // getTexts();
-  console.log('eve ga korisnik: ', user);
-  console.log('eve gi textovi: ', texts);
-  // TODO: CLEAN CODE AND REFACTOR ALL THE THINGS THAT ARE NOT WORKING, FIND A WAY TO FIX DATA FETCHING WITH RIGHT PERMISSIONS
-  // - LOOK AT THE DEVED AND NET NINJA TUTS TO GET A GRASP OF HOW THINGS ARE WORKING
+  const { login, googleLogin } = useFirebaseContext();
+
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     login(data.email, data.password);
     reset();
-    alert(`EVE GA: ${user}`);
   };
   return (
     <div className='dark:text-neutral-100 text-zinc-900 flex flex-col justify-center items-center w-full min-h-screen z-10'>
@@ -144,11 +140,8 @@ export default function Login() {
                 </span>
               </button>
             </div>
-            <div className="flex justify-center items-center w-full rounded-xl bg-[#ffffffcc] hover:bg-white transition-all duration-150 shadow-xl cursor-pointer py-2" onClick={() => googleLogin()}>
+            <div className="flex justify-center items-center w-full rounded-xl bg-[#ffffffcc] hover:bg-white transition-all duration-150 shadow-xl cursor-pointer py-2" onClick={googleLogin}>
               <FcGoogle className='text-3xl ' />
-            </div>
-            <div className="flex justify-center items-center w-full rounded-xl bg-[#ffffffcc] hover:bg-white transition-all duration-150 shadow-xl cursor-pointer py-2" onClick={() => getTexts()}>
-              AJDE
             </div>
           </div>
         </form>

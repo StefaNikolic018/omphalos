@@ -6,7 +6,7 @@ import React, {
   Dispatch,
   ReactNode,
 } from 'react';
-import { storageSelect } from '../../utils/storage';
+import { storageInsert, storageSelect } from '../../utils/storage';
 
 type GlobalContextType = {
   isInit: boolean;
@@ -17,9 +17,9 @@ type GlobalContextType = {
 
 export const GlobalContext = createContext<GlobalContextType>({
   isInit: false,
-  setIsInit: () => {},
+  setIsInit: () => { },
   dark: true,
-  setDark: () => {},
+  setDark: () => { },
 });
 
 export default function GlobalContextProvider({
@@ -40,6 +40,7 @@ export default function GlobalContextProvider({
 
   useEffect(() => {
     if (storageSelect('mode') !== null) {
+      console.log(storageSelect('mode'))
       setDark(storageSelect('mode') === 'dark');
       setIsInit(true);
     }
@@ -48,6 +49,9 @@ export default function GlobalContextProvider({
   useEffect(() => {
     const body = window.document.body.classList;
     dark ? body.add('dark') : body.remove('dark');
+    if (storageSelect('mode')) {
+      storageInsert('mode', dark ? 'dark' : 'white')
+    }
   }, [dark]);
 
   return (

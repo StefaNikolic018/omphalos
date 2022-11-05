@@ -4,11 +4,11 @@ import useDb from './useDb';
 // Import the functions you need from the SDKs you need
 
 export const FirebaseContext = createContext<any>({
-  user: {},
-  login: async () => {},
-  register: async () => {},
-  logout: async () => {},
-  googleLogin: async () => {},
+  user: false,
+  login: async () => { },
+  register: async () => { },
+  logout: async () => { },
+  googleLogin: async () => { },
 });
 
 export default function FirebaseContextProvider({
