@@ -40,7 +40,7 @@ const renderNav = (items: navItem[]) => {
     <li key={i.text}>
       <Tooltip text={i.text}>
         <Link
-          className='w-2/3 mx-auto rounded-3xl mb-3 bg-gray-200 dark:bg-zinc-800 hover:bg-gray-300 dark:hover:bg-zinc-700 px-2 py-1 hover:rounded-xl transition-all duration-200 ease-liner hover:text-orange-600 dark:hover:text-orange-600 dark:shadow-zinc-400 hover:shadow-sm flex justify-center group'
+          className='w-2/3 ml-2 rounded-3xl mb-3 bg-gray-300 dark:bg-zinc-800 hover:bg-gray-300 dark:hover:bg-zinc-700 px-2 py-1 hover:rounded-xl transition-all duration-200 ease-liner hover:text-orange-600 dark:hover:text-orange-600 dark:shadow-zinc-400 hover:shadow-sm flex justify-center group'
           to={i.url}
         >
           {i.icon}
@@ -55,7 +55,7 @@ export default function index() {
   return (
     <div className='flex flex-col justify-between items-center h-screen p-3 w-30 bg-neutral-100 dark:bg-zinc-900 dark:text-neutral-100 text-zinc-900 shadow-md dark:shadow-neutral-100 shadow-zinc-900'>
       <div className='space-y-5'>
-        <div className='flex items-center justify-between rounded-3xl bg-gray-200 dark:bg-zinc-800 p-2 hover:rounded-xl transition-all duration-200 ease-liner dark:hover:bg-zinc-700 border border-y-transparent border-x-orange-400'>
+        <div className='flex items-center justify-between rounded-3xl bg-gray-300 dark:bg-zinc-800 p-2 hover:rounded-xl transition-all duration-200 ease-liner dark:hover:bg-zinc-700 border border-y-transparent border-x-orange-400'>
           <h2>
             <img
               className='w-16 dark:invert dark:saturate-0'
@@ -64,20 +64,28 @@ export default function index() {
             />
           </h2>
         </div>
-        <hr className='mx-auto h-0.5 bg-gray-200 rounded border-0 dark:bg-zinc-800' />
+        <hr className='mx-auto h-1 bg-gray-300 rounded border-0 dark:bg-zinc-800' />
         <div className='flex-1'>
           <ul className='pt-2 pb-4 space-y-1 text-sm'>
             {renderNav(user ? navItems.user : navItems.guest)}
 
-            {!!user && <li><Tooltip text="Logout">
-              <button
-                className='w-2/3 mx-auto rounded-3xl mb-3 bg-gray-200 dark:bg-zinc-800 hover:bg-gray-300 dark:hover:bg-zinc-700 px-2 py-1 hover:rounded-xl transition-all duration-200 ease-liner hover:text-orange-600 dark:hover:text-orange-600 dark:shadow-zinc-400 hover:shadow-sm flex justify-center group'
-                onClick={logout}
-              >
-                <BiLogOutCircle className='text-4xl dark:text-neutral-100 group-hover:text-orange-400' />
-              </button>
-            </Tooltip>
-            </li>
+            {!!user && <>
+              <li>
+                <Tooltip text={user.displayName}>
+                  <img src={user.photoURL} alt="User" className='w-16 h-16 rounded-full border-4 border-orange-500 mb-4 cursor-pointer hover:opacity-80' />
+                </Tooltip>
+              </li>
+              <li><Tooltip text="Logout">
+                <button
+                  className='w-2/3 ml-2 rounded-3xl mb-3 bg-gray-300 dark:bg-zinc-800 hover:bg-gray-300 dark:hover:bg-zinc-700 px-2 py-1 hover:rounded-xl transition-all duration-200 ease-liner hover:text-orange-600 dark:hover:text-orange-600 dark:shadow-zinc-400 hover:shadow-sm flex justify-center group'
+                  onClick={logout}
+                >
+                  <BiLogOutCircle className='text-4xl dark:text-neutral-100 group-hover:text-orange-400' />
+                </button>
+              </Tooltip>
+              </li>
+
+            </>
             }
 
 

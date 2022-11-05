@@ -8,10 +8,6 @@ import Dashboard from '../Pages/Dashboard';
 import ProtectedLayout from './ProtectedLayout';
 
 export default function Router() {
-  // TODO:
-  // - Create hook for mode switch
-  // - Create hook for global state so that we can implement redirection with framer motion
-  // - Create Global Context + React Query or Zustand Store + React Query
   return (
     <Routes>
       <Route path='/' element={<ProtectedLayout isUser={true} />}>
