@@ -5,6 +5,7 @@ import useDb from './useDb';
 
 export const FirebaseContext = createContext<any>({
   user: false,
+  isPending: true,
   login: async () => { },
   register: async () => { },
   logout: async () => { },
@@ -17,11 +18,11 @@ export default function FirebaseContextProvider({
   children: ReactNode;
 }) {
   const { app, texts, getTexts, db } = useDb();
-  const { user, register, login, logout, googleLogin } = useAuth(app);
+  const { user, isPending, register, login, logout, googleLogin } = useAuth(app);
 
   return (
     <FirebaseContext.Provider
-      value={{ user, login, register, logout, getTexts, texts, googleLogin }}
+      value={{ user, isPending, login, register, logout, getTexts, texts, googleLogin }}
     >
       {children}
     </FirebaseContext.Provider>

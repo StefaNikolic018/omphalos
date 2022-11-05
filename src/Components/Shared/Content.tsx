@@ -1,7 +1,7 @@
 import React from 'react';
 import Snowfall from 'react-snowfall';
 
-import Loader from '../Loader';
+import Loader from '../ThemeLoader';
 import Sidebar from '../Sidebar';
 import bg from '../../assets/background.jpg';
 

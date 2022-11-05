@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -18,7 +18,7 @@ export default function useAuth(app: FirebaseApp) {
   const provider = new GoogleAuthProvider();
 
   const [user, setUser]: any = useState(false);
-
+  const [isPending, setIsPending] = useState(true);
 
   const googleLogin = useCallback(async () => {
     try {
@@ -52,7 +52,6 @@ export default function useAuth(app: FirebaseApp) {
     },
     [setUser]
   );
-
   // Login
   const login = useCallback(
     async (email: string, password: string) => {
@@ -72,7 +71,6 @@ export default function useAuth(app: FirebaseApp) {
     },
     [setUser]
   );
-
   // Logout
   const logout = useCallback(async () => {
     try {
@@ -84,5 +82,14 @@ export default function useAuth(app: FirebaseApp) {
     }
   }, [setUser]);
 
-  return { user, register, login, logout, googleLogin };
+  useEffect(() => {
+    auth.onAuthStateChanged((user) => {
+      setUser(user);
+      setIsPending(false);
+    })
+  }
+    , [])
+
+
+  return { user, isPending, register, login, logout, googleLogin };
 }
