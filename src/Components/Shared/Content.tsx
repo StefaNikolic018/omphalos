@@ -1,5 +1,6 @@
 import React from 'react';
 import Snowfall from 'react-snowfall';
+import { ToastContainer } from 'react-toastify';
 
 import Loader from '../ThemeLoader';
 import Sidebar from '../Sidebar';
@@ -12,9 +13,11 @@ import useGlobalContext from '../../Context/Global/useGlobalContext';
 
 export default function Content({ children }: { children: React.ReactNode }) {
   const { dark, isInit } = useGlobalContext();
+
   return (
     <FirebaseContextProvider>
       <div className='relative dark:bg-zinc-900 w-screen overflow-x-hidden min-h-screen'>
+        <ToastContainer />
         {!isInit ? (
           <Loader />
         ) : (

@@ -1,8 +1,5 @@
 import React, { ReactNode } from 'react';
 
-// TODO:
-// 4. Create register page
-
 export default function Tooltip({
   children,
   text,

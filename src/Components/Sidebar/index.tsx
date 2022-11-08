@@ -40,7 +40,7 @@ const renderNav = (items: navItem[]) => {
     <li key={i.text}>
       <Tooltip text={i.text}>
         <Link
-          className='w-2/3 ml-2 rounded-3xl mb-3 bg-gray-300 dark:bg-zinc-800 hover:bg-gray-300 dark:hover:bg-zinc-700 px-2 py-1 hover:rounded-xl transition-all duration-200 ease-liner hover:text-orange-600 dark:hover:text-orange-600 dark:shadow-zinc-400 hover:shadow-sm flex justify-center group'
+          className='w-2/3 mx-auto rounded-3xl mb-3 bg-gray-300 dark:bg-zinc-800 hover:bg-gray-300 dark:hover:bg-zinc-700 px-2 hover:rounded-xl transition-all duration-200 ease-liner hover:text-orange-600 dark:hover:text-orange-600 dark:shadow-zinc-400 hover:shadow-sm flex justify-center group'
           to={i.url}
         >
           {i.icon}
@@ -65,7 +65,7 @@ export default function index() {
           </h2>
         </div>
         <hr className='mx-auto h-1 bg-gray-300 rounded border-0 dark:bg-zinc-800' />
-        <div className='flex-1'>
+        <div className='flex flex-col justify-center items-center'>
           <ul className='pt-2 pb-4 space-y-1 text-sm'>
             {renderNav(user ? navItems.user : navItems.guest)}
 
@@ -77,7 +77,7 @@ export default function index() {
               </li>
               <li><Tooltip text="Logout">
                 <button
-                  className='w-2/3 ml-2 rounded-3xl mb-3 bg-gray-300 dark:bg-zinc-800 hover:bg-gray-300 dark:hover:bg-zinc-700 px-2 py-1 hover:rounded-xl transition-all duration-200 ease-liner hover:text-orange-600 dark:hover:text-orange-600 dark:shadow-zinc-400 hover:shadow-sm flex justify-center group'
+                  className='w-2/3 mx-auto rounded-3xl mb-3 bg-gray-300 dark:bg-zinc-800 hover:bg-gray-300 dark:hover:bg-zinc-700 px-2 py-1 hover:rounded-xl transition-all duration-200 ease-liner hover:text-orange-600 dark:hover:text-orange-600 dark:shadow-zinc-400 hover:shadow-sm flex justify-center group'
                   onClick={logout}
                 >
                   <BiLogOutCircle className='text-4xl dark:text-neutral-100 group-hover:text-orange-400' />

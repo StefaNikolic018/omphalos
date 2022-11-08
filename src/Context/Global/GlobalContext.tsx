@@ -6,6 +6,8 @@ import React, {
   Dispatch,
   ReactNode,
 } from 'react';
+import { useLocation } from 'react-router-dom';
+import useToast from '../../hooks/useToast';
 import { storageInsert, storageSelect } from '../../utils/storage';
 
 type GlobalContextType = {
@@ -27,7 +29,9 @@ export default function GlobalContextProvider({
 }: {
   children: ReactNode;
 }) {
-  // REFACTOR THIS CODE INTO SOME CUSTOM HOOK
+  const location = useLocation();
+  const notify = useToast();
+
   const [dark, setDark] = useState(
     storageSelect('mode')
       ? storageSelect('mode') === 'dark'
@@ -53,6 +57,12 @@ export default function GlobalContextProvider({
       storageInsert('mode', dark ? 'dark' : 'white')
     }
   }, [dark]);
+
+  useEffect(() => {
+    if (location?.state?.message) {
+      notify(location.state.message, true)
+    }
+  }, [location.state])
 
   return (
     <GlobalContext.Provider value={{ dark, setDark, isInit, setIsInit }}>

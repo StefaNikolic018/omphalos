@@ -24,9 +24,8 @@ export default function useAuth(app: FirebaseApp) {
     try {
       const res = await signInWithPopup(auth, provider);
       const credential = GoogleAuthProvider.credentialFromResult(res);
-      const token = credential?.accessToken;
-      const user = res.user;
-      setUser(user);
+      // const token = credential?.accessToken;
+      // const user = res.user;
       navigate('/dashboard')
     } catch (e) {
       console.log('Problem with Google sign in: ', e);
@@ -42,9 +41,7 @@ export default function useAuth(app: FirebaseApp) {
           password
         );
 
-        const user = userCredential.user;
-        console.log('eve me pokrecem se komso na gugl ', user);
-        setUser(user);
+        // const user = userCredential.user;
         navigate('/dashboard')
       } catch (e) {
         console.log('Problem with registration! ', e);
@@ -61,9 +58,7 @@ export default function useAuth(app: FirebaseApp) {
           email,
           password
         );
-        const user = userCredential.user;
-        console.log('eve me pokrecem se komso ', user);
-        setUser(user);
+        // const user = userCredential.user;
         navigate('/dashboard')
       } catch (e) {
         console.log('Problem with logging in! ', e);
@@ -75,7 +70,6 @@ export default function useAuth(app: FirebaseApp) {
   const logout = useCallback(async () => {
     try {
       const res = await signOut(auth);
-      setUser(false);
       console.log('logged out! ', res);
     } catch (e) {
       console.log('Problem with logging out! ', e);
@@ -85,6 +79,9 @@ export default function useAuth(app: FirebaseApp) {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       setUser(user);
+      if (!user) {
+        navigate('/login')
+      }
       setIsPending(false);
     })
   }
