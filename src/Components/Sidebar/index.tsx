@@ -21,16 +21,16 @@ const navItems = {
       text: 'Login',
       url: '/login',
       icon: (
-        <AiOutlineLogin className='text-4xl dark:text-neutral-100 group-hover:text-orange-400' />
+        <AiOutlineLogin className='text-5xl dark:text-neutral-100 group-hover:text-orange-400' />
       ),
     },
-    {
-      text: 'Register',
-      url: '/register',
-      icon: (
-        <AiOutlineUserAdd className='text-4xl dark:text-neutral-100 group-hover:text-orange-400' />
-      ),
-    },
+    // {
+    //   text: 'Register',
+    //   url: '/register',
+    //   icon: (
+    //     <AiOutlineUserAdd className='text-5xl dark:text-neutral-100 group-hover:text-orange-400' />
+    //   ),
+    // },
   ],
   user: [],
 };
@@ -40,7 +40,7 @@ const renderNav = (items: navItem[]) => {
     <li key={i.text}>
       <Tooltip text={i.text}>
         <Link
-          className='w-2/3 mx-auto rounded-3xl mb-3 bg-gray-300 dark:bg-zinc-800 hover:bg-gray-300 dark:hover:bg-zinc-700 px-2 hover:rounded-xl transition-all duration-200 ease-liner hover:text-orange-600 dark:hover:text-orange-600 dark:shadow-zinc-400 hover:shadow-sm flex justify-center group'
+          className='w-2/3 mx-auto rounded-3xl mb-3 bg-gray-300 dark:bg-zinc-800 hover:bg-gray-300 dark:hover:bg-zinc-700 px-3 hover:rounded-2xl transition-all duration-200 ease-liner hover:text-orange-600 dark:hover:text-orange-600 dark:shadow-zinc-400 hover:shadow-sm flex justify-center group'
           to={i.url}
         >
           {i.icon}
@@ -55,7 +55,7 @@ export default function index() {
   return (
     <div className='flex flex-col justify-between items-center h-screen p-3 w-30 bg-neutral-100 dark:bg-zinc-900 dark:text-neutral-100 text-zinc-900 shadow-md dark:shadow-neutral-100 shadow-zinc-900'>
       <div className='space-y-5'>
-        <div className='flex items-center justify-between rounded-3xl bg-gray-300 dark:bg-zinc-800 p-2 hover:rounded-xl transition-all duration-200 ease-liner dark:hover:bg-zinc-700 border border-y-transparent border-x-orange-400'>
+        <div className='flex items-center justify-between rounded-3xl bg-gray-300 dark:bg-zinc-800 p-2 hover:rounded-xl transition-all duration-200 ease-liner dark:hover:bg-zinc-700 border border-y-transparent border-x-orange-400 border-x-2'>
           <h2>
             <img
               className='w-16 dark:invert dark:saturate-0'

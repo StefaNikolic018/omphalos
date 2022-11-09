@@ -24,9 +24,9 @@ export default function Login() {
     reset();
   };
   return (
-    <div className='dark:text-neutral-100 text-zinc-900 flex flex-col justify-center items-center w-full min-h-screen z-10'>
-      <h1 className='font-bold text-3xl -mb-10 animate-bounce'>LOGIN</h1>
-      <div className=' z-10 flex flex-col relative w-[40%]'>
+    <div className='dark:text-neutral-100 text-zinc-900 flex flex-col justify-center items-center w-full min-h-screen z-10 relative'>
+      {/* <h1 className='font-bold text-3xl -mb-10 animate-bounce'>LOGIN</h1> */}
+      <div className='z-10 flex flex-col relative w-[40%]'>
         <svg
           version='1.1'
           xmlns='http://www.w3.org/2000/svg'
@@ -70,13 +70,13 @@ export default function Login() {
             ></animate>
           </path>
         </svg>
-        <form
+        {/* <form
           onSubmit={handleSubmit(onSubmit)}
           className='absolute top-1/3 left-1/3 gap-5 flex flex-col justify-center items-center'
         >
           <input
             type='email'
-            className='border-2 border-zinc-900 dark:text-zinc-800 py-2 px-5 text-zinc-800  dark:border-neutral-100 dark:bg-zinc-900 hover:scale-x-105 rounded-xl text-xl transition-all duration-150 ease-linear  
+            className='border-2 border-zinc-900 dark:text-zinc-800 py-2 px-5 text-zinc-800  dark:border-neutral-100 dark:bg-zinc-900 hover:scale-x-105 rounded-xl text-lg transition-all duration-150 ease-linear  
           hover:opacity-80
           focus:border-orange-400
           invalid:border-pink-500 invalid:text-pink-600
@@ -94,7 +94,7 @@ export default function Login() {
           <input
             type='password'
             className='border-2 border-zinc-900 dark:text-zinc-800 py-2 px-5 text-zinc-800  
-          dark:bg-zinc-900 dark:border-neutral-100 hover:scale-x-105 rounded-xl text-xl transition-all duration-150 ease-linear  
+          dark:bg-zinc-900 dark:border-neutral-100 hover:scale-x-105 rounded-xl text-lg transition-all duration-150 ease-linear  
           hover:opacity-80
           focus:border-orange-400
           invalid:border-pink-500 invalid:text-pink-600
@@ -140,11 +140,15 @@ export default function Login() {
                 </span>
               </button>
             </div>
-            <div className="flex justify-center items-center w-full rounded-xl bg-[#ffffffcc] hover:bg-white transition-all duration-150 shadow-xl cursor-pointer py-2" onClick={googleLogin}>
-              <FcGoogle className='text-3xl ' />
-            </div>
+
           </div>
-        </form>
+          <div className="flex justify-center items-center w-full rounded-xl bg-[#ffffffcc] hover:bg-white transition-all duration-150 shadow-xl cursor-pointer py-2" onClick={googleLogin}>
+            <FcGoogle className='text-3xl ' />
+          </div>
+        </form> */}
+      </div>
+      <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-xl bg-[#ffffffcc] hover:bg-white dark:bg-zinc-800 dark:hover:bg-zinc-900 border-2 border-zinc-900 dark:border-[#ffffffcc] transition-all duration-150 shadow-xl cursor-pointer py-2 px-2 z-10" onClick={googleLogin}>
+        <FcGoogle className='text-3xl ' />
       </div>
     </div>
   );
