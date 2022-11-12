@@ -7,12 +7,13 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from 'firebase/auth';
-import { FirebaseApp } from '@firebase/app';
+import useDb from './useDb';
 import { useNavigate } from 'react-router-dom';
 
 
 
-export default function useAuth(app: FirebaseApp) {
+export default function useAuth() {
+  const { app, texts, getTexts, db } = useDb();
   const auth = getAuth(app);
   const navigate = useNavigate()
   const provider = new GoogleAuthProvider();
@@ -82,11 +83,12 @@ export default function useAuth(app: FirebaseApp) {
       if (!user) {
         navigate('/login')
       }
+      getTexts();
       setIsPending(false);
     })
   }
     , [])
 
 
-  return { user, isPending, register, login, logout, googleLogin };
+  return { user, isPending, texts, register, login, logout, googleLogin };
 }

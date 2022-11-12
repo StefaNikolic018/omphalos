@@ -19,3 +19,13 @@
     background-size: cover;
   }
 }
+
+.ql-toolbar.ql-snow {
+  border-inline: 0 !important;
+  border-top: 0 !important;
+}
+
+.ql-container.ql-snow {
+  border-inline: 0 !important;
+  border-bottom: 0 !important;
+}
