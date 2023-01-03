@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 
 import Marquee from './Marquee';
 
-import logo from '../../assets/logo.png';
+import logo from '../../assets/omphalos-logo-custom.png';
 import useGlobalContext from '../../Context/Global/useGlobalContext';
 import { storageInsert } from '../../utils/storage';
 

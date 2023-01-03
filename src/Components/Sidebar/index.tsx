@@ -5,7 +5,8 @@ import ModeSwitch from './ModeSwitch';
 import Tooltip from '../Shared/Tooltip';
 import useFirebaseContext from '../../Context/Firebase/useFirebaseContext';
 
-import logo from '../../assets/logo.png';
+// import logo from '../../assets/logo.png';
+import logo from '../../assets/omphalos-logo-custom.png';
 import { BiLogOutCircle } from 'react-icons/bi'
 import { AiOutlineLogin, AiOutlineUserAdd } from 'react-icons/ai';
 
@@ -75,14 +76,15 @@ export default function index() {
                   <img src={user.photoURL} alt="User" className='w-16 h-16 rounded-full border-4 border-orange-500 mb-4 cursor-pointer hover:opacity-80' />
                 </Tooltip>
               </li>
-              <li><Tooltip text="Logout">
-                <button
-                  className='w-2/3 mx-auto rounded-3xl mb-3 bg-gray-300 dark:bg-zinc-800 hover:bg-gray-300 dark:hover:bg-zinc-700 px-2 py-1 hover:rounded-xl transition-all duration-200 ease-liner hover:text-orange-600 dark:hover:text-orange-600 dark:shadow-zinc-400 hover:shadow-sm flex justify-center group'
-                  onClick={logout}
-                >
-                  <BiLogOutCircle className='text-4xl dark:text-neutral-100 group-hover:text-orange-400' />
-                </button>
-              </Tooltip>
+              <li>
+                <Tooltip text="Logout">
+                  <button
+                    className='w-2/3 mx-auto rounded-3xl mb-3 bg-gray-300 dark:bg-zinc-800 hover:bg-gray-300 dark:hover:bg-zinc-700 px-2 py-1 hover:rounded-xl transition-all duration-200 ease-liner hover:text-orange-600 dark:hover:text-orange-600 dark:shadow-zinc-400 hover:shadow-sm flex justify-center group'
+                    onClick={logout}
+                  >
+                    <BiLogOutCircle className='text-4xl dark:text-neutral-100 group-hover:text-orange-400' />
+                  </button>
+                </Tooltip>
               </li>
 
             </>
