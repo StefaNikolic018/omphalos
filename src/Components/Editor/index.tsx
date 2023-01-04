@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import '../../css/quill.css'
 
 export default function index({ text }: { text: string }) {
     // TODO:
@@ -8,5 +9,14 @@ export default function index({ text }: { text: string }) {
     // 2. Create input for title of the text
     // 3. Create button, form and logic for text save 
 
-    return <ReactQuill className='bg-[#ffffffdb] rounded-xl w-full h-full text-black border-2 dark:border-white border-zinc-700' theme="snow" value={text} />
+    // TESTING CODE JUST TO SEE HOW DOES THE EDITOR CHANGES INPUT(IT ADDS HTML TAGS)
+    // const [textData, setTextData] = useState('');
+    // const handleChange = useCallback(
+    //     (text: string) => {
+    //         setTextData(text);
+    //     },
+    //     [setTextData],
+    // )
+
+    return <ReactQuill className='bg-[#ffffffdb] dark:bg-zinc-900 dark:text-white rounded-xl w-full h-full text-black border-2 dark:border-[#ffffffdb]  border-zinc-700' placeholder='Enter your story here' theme="snow" value={text} />
 }
