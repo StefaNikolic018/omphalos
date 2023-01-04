@@ -20,7 +20,7 @@ export default function Dashboard() {
   const [selectedText, setSelectedText] = useState<string | boolean>(false);
   return (
     <div className='flex flex-row justify-around items-center h-full'>
-      <div className="w-8/12 h-[80%] z-20">
+      <div className="w-8/12 h-[80%] z-10">
         <Editor text={texts.find((text: any) => text.id === selectedText)?.body} />
       </div>
       <div className="w-3/12 h-[80%] z-20 p-2 border-2 dark:border-white border-zinc-700 rounded-xl bg-[#ffffff72] flex flex-col flex-wrap">
