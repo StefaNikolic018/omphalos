@@ -18,5 +18,5 @@ export default function index({ text }: { text: string }) {
     //     [setTextData],
     // )
 
-    return <ReactQuill className='bg-[#ffffffdb] dark:bg-zinc-900 dark:text-white rounded-xl w-full h-full text-black border-2 dark:border-[#ffffffdb]  border-zinc-700' placeholder='Enter your story here' theme="snow" value={text} />
+    return <div className="w-7/12 h-[80%] z-10"><ReactQuill className='bg-[#ffffffdb] dark:bg-zinc-900 dark:text-white rounded-xl w-full h-full text-black border-2 dark:border-[#ffffffdb]  border-zinc-700' placeholder='Enter your story here' theme="snow" value={text} /></div>
 }
