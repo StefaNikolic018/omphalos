@@ -17,13 +17,12 @@ export default function Dashboard() {
   // 9. Add vscode shortcuts like ctrl+shift+k, ctrl+d etc.
   // 10. Change favicon ✔ but needs to be redone
   // 11. Look how the editor saves formatted text and show it formatted - on change is adding html tags, so we save it like that
-  // FIRST THING WE NEED TO CREATE COMPONENT OUT OF RIGHT BAR WITH TEXTS AND CREATE WHOLE LOGIC BEHIND SELECTING TEXTS
   const { user, texts } = useFirebaseContext();
   const [selectedText, setSelectedText] = useState<string | boolean>(false);
   return (
     <div className='flex flex-row justify-around items-center h-full'>
-        <Editor text={texts.find((text: any) => text.id === selectedText)?.body} />
-        <TextsBar texts={texts} selectedText={selectedText} setSelectedText={setSelectedText} />
+      <Editor text={texts.find((text: any) => text.id === selectedText)?.body} />
+      <TextsBar texts={texts} selectedText={selectedText} setSelectedText={setSelectedText} />
     </div>
   )
 }
