@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { IText } from 'src/interfaces/texts';
 import Editor from '../Components/Editor'
 import TextsBar from '../Components/TextsBar'
 import useFirebaseContext from '../Context/Firebase/useFirebaseContext'
@@ -21,8 +22,8 @@ export default function Dashboard() {
   const [selectedText, setSelectedText] = useState<string | boolean>(false);
   return (
     <div className='flex flex-row justify-around items-center h-full'>
-      <Editor text={texts.find((text: any) => text.id === selectedText)?.body} />
-      <TextsBar texts={texts} selectedText={selectedText} setSelectedText={setSelectedText} />
+      <Editor text={(texts as IText[]).find((text: IText) => text.id === selectedText)?.body!} />
+      <TextsBar texts={texts as IText[]} selectedText={selectedText} setSelectedText={setSelectedText} />
     </div>
   )
 }

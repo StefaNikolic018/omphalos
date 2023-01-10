@@ -1,7 +1,8 @@
 import React, { useState, useCallback } from 'react';
 import { initializeApp } from 'firebase/app';
-import { getAnalytics } from 'firebase/analytics';
+// import { getAnalytics } from 'firebase/analytics';
 import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import { IText } from 'src/interfaces/texts';
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -23,15 +24,16 @@ const app = initializeApp(firebaseConfig);
 // Initialize Firestore
 const db = getFirestore(app);
 // Initialize Analytics
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app);
 
 export default function useDb() {
-  const [texts, setTexts] = useState<any>([]);
+  const [texts, setTexts] = useState<IText[] | unknown>([]);
   // Get all texts
   const getTexts = useCallback(async () => {
     const textsCol = collection(db, 'texts');
     const textsSnapshot = await getDocs(textsCol);
     const textsList = textsSnapshot.docs.map((doc) => doc.data());
+    console.log(textsList)
     setTexts(textsList);
   }, [setTexts]);
 

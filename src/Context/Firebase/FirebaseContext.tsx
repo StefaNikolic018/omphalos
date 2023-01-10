@@ -1,6 +1,7 @@
 import React, { createContext, ReactNode } from 'react';
+import { IText } from 'src/interfaces/texts';
 import useAuth from './useAuth';
-import useDb from './useDb';
+// import useDb from './useDb';
 // Import the functions you need from the SDKs you need
 
 type FirebaseContextType = {
@@ -10,7 +11,7 @@ type FirebaseContextType = {
   register: (email: string, password: string) => Promise<void>,
   logout: () => Promise<void>,
   googleLogin: () => Promise<void>,
-  texts: any
+  texts: IText[] | unknown
 };
 
 export const FirebaseContext = createContext<FirebaseContextType>({
@@ -20,7 +21,7 @@ export const FirebaseContext = createContext<FirebaseContextType>({
   register: async (email: string, password: string) => { },
   logout: async () => { },
   googleLogin: async () => { },
-  texts: {}
+  texts: []
 });
 
 export default function FirebaseContextProvider({
