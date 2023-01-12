@@ -19,10 +19,11 @@ export default function Login() {
   });
   const { login, googleLogin } = useFirebaseContext();
 
-  const onSubmit: SubmitHandler<FieldValues> = (data) => {
-    login(data.email, data.password);
-    reset();
-  };
+  // const onSubmit: SubmitHandler<FieldValues> = (data) => {
+  //   login(data.email, data.password);
+  //   reset();
+  // };
+
   return (
     <div className='dark:text-neutral-100 text-zinc-900 flex flex-col justify-center items-center w-full min-h-screen z-10 relative'>
       {/* <h1 className='font-bold text-3xl -mb-10 animate-bounce'>LOGIN</h1> */}

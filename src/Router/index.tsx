@@ -6,6 +6,10 @@ import ProtectedLayout from './ProtectedLayout';
 const Dashboard = lazy(() => import('../Pages/Dashboard'));
 const Login = lazy(() => import('../Components/Auth/Login'));
 
+// TODO: 
+// 1. Look at the links for private routes 
+// 2. Implement what I learn there
+
 export default function Router() {
   return (
     <Suspense fallback={<Loader />} >
