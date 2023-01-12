@@ -7,6 +7,7 @@ import React, {
   ReactNode,
 } from 'react';
 import { useLocation } from 'react-router-dom';
+
 import useToast from '../../hooks/useToast';
 import { storageInsert, storageSelect } from '../../utils/storage';
 
@@ -44,7 +45,7 @@ export default function GlobalContextProvider({
 
   useEffect(() => {
     if (storageSelect('mode') !== null) {
-      console.log(storageSelect('mode'))
+      // console.log(storageSelect('mode'))
       setDark(storageSelect('mode') === 'dark');
       setIsInit(true);
     }

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import { useNavigate } from 'react-router-dom';
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -7,15 +8,16 @@ import {
   signInWithPopup,
   GoogleAuthProvider,
 } from 'firebase/auth';
+
 import useDb from './useDb';
-import { useNavigate } from 'react-router-dom';
 
 
 
 export default function useAuth() {
-  const { app, texts, getTexts, db } = useDb();
-  const auth = getAuth(app);
+  const { app, texts, getTexts } = useDb();
   const navigate = useNavigate()
+
+  const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
 
   const [user, setUser]: any = useState(false);
@@ -32,6 +34,7 @@ export default function useAuth() {
       console.log('Problem with Google sign in: ', e);
     }
   }, [setUser]);
+
   // Register
   const register = useCallback(
     async (email: string, password: string) => {
@@ -50,6 +53,7 @@ export default function useAuth() {
     },
     [setUser]
   );
+
   // Login
   const login = useCallback(
     async (email: string, password: string) => {
@@ -67,6 +71,7 @@ export default function useAuth() {
     },
     [setUser]
   );
+
   // Logout
   const logout = useCallback(async () => {
     try {
