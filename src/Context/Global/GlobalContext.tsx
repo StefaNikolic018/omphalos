@@ -62,6 +62,7 @@ export default function GlobalContextProvider({
   useEffect(() => {
     if (location?.state?.message) {
       notify(location.state.message, true)
+      window.history.replaceState({}, document.title)
     }
   }, [location.state])
 
