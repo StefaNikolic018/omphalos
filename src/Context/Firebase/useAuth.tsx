@@ -29,7 +29,6 @@ export default function useAuth() {
       const credential = GoogleAuthProvider.credentialFromResult(res);
       // const token = credential?.accessToken;
       // const user = res.user;
-      navigate('/dashboard')
     } catch (e) {
       console.log('Problem with Google sign in: ', e);
     }
@@ -46,7 +45,6 @@ export default function useAuth() {
         );
 
         // const user = userCredential.user;
-        navigate('/dashboard')
       } catch (e) {
         console.log('Problem with registration! ', e);
       }
@@ -64,7 +62,6 @@ export default function useAuth() {
           password
         );
         // const user = userCredential.user;
-        navigate('/dashboard')
       } catch (e) {
         console.log('Problem with logging in! ', e);
       }
@@ -85,9 +82,6 @@ export default function useAuth() {
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       setUser(user);
-      if (!user) {
-        navigate('/login')
-      }
       getTexts();
       setIsPending(false);
     })

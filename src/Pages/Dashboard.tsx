@@ -6,9 +6,9 @@ import useFirebaseContext from '../Context/Firebase/useFirebaseContext'
 
 export default function Dashboard() {
   // TODO: 
-  // 0. FIX INTERACTION BETWEEN SELECT TEXTS IN EDITOR AND SIDEBAR
+  // 0. FIX INTERACTION BETWEEN SELECT TEXTS IN EDITOR AND SIDEBAR ✔
   // 1. Add select text feature ✔
-  // 2. Add text to editor on select
+  // 2. Add text to editor on select ✔
   // 3. Add new text feature
   // 4. Change fields based on editors functions
   // 5. Handle texts/sidebar scroll and mobile version

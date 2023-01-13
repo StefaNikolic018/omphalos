@@ -1,28 +1,24 @@
 import { lazy, Suspense } from 'react';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
+
+import useFirebaseContext from '../Context/Firebase/useFirebaseContext';
 
 import Loader from '../Components/Loader'
-import ProtectedLayout from './ProtectedLayout';
 const Dashboard = lazy(() => import('../Pages/Dashboard'));
 const Login = lazy(() => import('../Components/Auth/Login'));
 
-// TODO: 
-// 1. Look at the links for private routes 
-// 2. Implement what I learn there
-
 export default function Router() {
+  const { user, isPending } = useFirebaseContext()
+
+  if (isPending) {
+    return <Loader />
+  }
+
   return (
     <Suspense fallback={<Loader />} >
       <Routes>
-        <Route path='/' element={<ProtectedLayout isUser={true} />}>
-          <Route path='dashboard' element={<Dashboard />} />
-        </Route>
-        <Route path='/' element={<ProtectedLayout isUser={false} redirectPath="/dashboard" />}>
-          <Route path='login' element={<Login />} />
-        </Route>
-        <Route path='*' element={<ProtectedLayout isUser={true} />}>
-          <Route path='dashboard' element={<Dashboard />} />
-        </Route>
+        <Route path='/' element={user ? <Dashboard /> : <Login />} />
+        <Route path='*' element={<Navigate state={{ message: 'Sorry, non-existing page!' }} to='/' replace />} />
       </Routes>
     </Suspense>
   );
