@@ -1,9 +1,6 @@
 import React from 'react'
 import { ColorRing } from 'react-loader-spinner'
 
-
-import logo from '../../assets/logo.png'
-
 export default function index() {
     return (
         <div className="w-screen h-screen flex justify-center items-center bg-neutral-400">
