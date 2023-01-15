@@ -1,6 +1,5 @@
 import React, { useCallback } from 'react';
 import Snowfall from 'react-snowfall';
-import { useNavigate } from 'react-router-dom';
 
 import Marquee from './Marquee';
 
@@ -9,12 +8,10 @@ import useGlobalContext from '../../Context/Global/useGlobalContext';
 import { storageInsert } from '../../utils/storage';
 
 export default function index() {
-  const navigate = useNavigate();
   const { dark, setDark, setIsInit } = useGlobalContext();
 
   const closeIntro = useCallback(() => {
     storageInsert('mode', dark ? 'dark' : 'neutral-100');
-    navigate('/login');
     setIsInit(true);
   }, [dark]);
 
