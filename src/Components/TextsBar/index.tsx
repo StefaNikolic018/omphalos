@@ -11,6 +11,9 @@ export default function index({ texts, selectedText, setSelectedText }: { texts:
     </div>), [setSelectedText, texts])
 
   return <div className="w-4/12 h-[80%] z-20 p-2 border-2 dark:border-[#ffffffdb] border-zinc-700 rounded-xl bg-[#ffffff72] dark:bg-zinc-900  flex flex-col flex-wrap">
+    <button className="py-1 mb-2 rounded-xl flex justify-center items-center border-2 dark:border-[#ffffffdb] border-zinc-700 text-black dark:text-white hover:bg-orange-500 transition-colors duration-200">
+      Add new
+    </button>
     {renderTexts}
   </div>
 }
