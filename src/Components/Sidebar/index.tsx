@@ -56,7 +56,7 @@ export default function index() {
           </h2>
         </div>
         <hr className='mx-auto h-1 bg-gray-300 rounded border-0 dark:bg-zinc-800' />
-        <div className='flex flex-col justify-center items-center'>
+        <div className='flex-center flex-col'>
           {!!user &&
             <ul className='pt-2 pb-4 space-y-1 text-sm'>
               <li>

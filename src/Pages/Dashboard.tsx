@@ -21,13 +21,15 @@ export default function Dashboard() {
   // 10. Change favicon ✔ but needs to be redone ✔
   // 11. Look how the editor saves formatted text and show it formatted - on change is adding html tags, so we save it like that
   // 12. Memoize the components for future use with React.memo
+  // 13. Rewrite all of Tailwind inline classes to utility classes in css file
+
   const { texts } = useFirebaseContext();
   const [selectedText, setSelectedText] = useState<string | boolean>(false);
 
   const editorText = useMemo(() => (texts as IText[]).find((text: IText) => text.id === selectedText)?.body!, [selectedText, texts])
 
   return (
-    <div className='flex flex-row justify-around items-center h-full'>
+    <div className='dashboard-content'>
       <Editor text={editorText} />
       <TextsBar texts={texts as IText[]} selectedText={selectedText} setSelectedText={setSelectedText} />
     </div>

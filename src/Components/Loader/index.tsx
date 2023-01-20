@@ -3,7 +3,7 @@ import { ColorRing } from 'react-loader-spinner'
 
 export default function index() {
     return (
-        <div className="w-screen h-screen flex justify-center items-center bg-neutral-400">
+        <div className="w-screen h-screen flex-center bg-neutral-400">
             <div className="p-5 rounded-full bg-zinc-700">
                 <ColorRing
                     visible={true}
