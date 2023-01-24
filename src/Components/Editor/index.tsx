@@ -9,14 +9,5 @@ export default function index({ text }: { text: string }) {
     // 2. Create input for title of the text
     // 3. Create button, form and logic for text save 
 
-    // TESTING CODE JUST TO SEE HOW DOES THE EDITOR CHANGES INPUT(IT ADDS HTML TAGS)
-    // const [textData, setTextData] = useState('');
-    // const handleChange = useCallback(
-    //     (text: string) => {
-    //         setTextData(text);
-    //     },
-    //     [setTextData],
-    // )
-
     return <div className="w-7/12 h-[80%] z-10"><ReactQuill className='bg-[#ffffffdb] dark:bg-zinc-900 dark:text-white rounded-xl w-full h-full text-black border-2 dark:border-[#ffffffdb]  border-zinc-700' placeholder='Enter your story here' theme="snow" value={text} /></div>
 }

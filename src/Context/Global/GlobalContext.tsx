@@ -45,7 +45,6 @@ export default function GlobalContextProvider({
 
   useEffect(() => {
     if (storageSelect('mode') !== null) {
-      // console.log(storageSelect('mode'))
       setDark(storageSelect('mode') === 'dark');
       setIsInit(true);
     }

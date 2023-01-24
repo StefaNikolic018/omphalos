@@ -6,7 +6,6 @@ import GlobalContextProvider from './Context/Global/GlobalContext';
 import Content from './Components/Shared/Content';
 
 function App() {
-  // REFACTOR THIS CODE INTO SOME CUSTOM HOOK
 
   return (
     <div className='App'>

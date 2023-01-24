@@ -1,7 +1,6 @@
 import React, { createContext, ReactNode } from 'react';
 import { IText } from 'src/interfaces/texts';
 import useAuth from './useAuth';
-// import useDb from './useDb';
 // Import the functions you need from the SDKs you need
 
 type FirebaseContextType = {
