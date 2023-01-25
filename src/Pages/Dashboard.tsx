@@ -26,7 +26,7 @@ export default function Dashboard() {
   const { texts } = useFirebaseContext();
   const [selectedText, setSelectedText] = useState<string | boolean>(false);
 
-  const editorText = useMemo(() => (texts as IText[]).find((text: IText) => text.id === selectedText)?.body!, [selectedText, texts])
+  const editorText = useMemo(() => (texts as IText[]).find((text: IText) => text.id === selectedText), [selectedText, texts])
 
   return (
     <div className='dashboard-content'>
