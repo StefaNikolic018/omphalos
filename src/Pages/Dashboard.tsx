@@ -1,13 +1,13 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo } from 'react';
 
 import { IText } from 'src/interfaces/texts';
 
-import Editor from '../Components/Editor'
-import TextsBar from '../Components/TextsBar'
-import useFirebaseContext from '../Context/Firebase/useFirebaseContext'
+import Editor from '../Components/Editor';
+import TextsBar from '../Components/TextsBar';
+import useFirebaseContext from '../Context/Firebase/useFirebaseContext';
 
 export default function Dashboard() {
-  // TODO: 
+  // TODO:
   // 0. FIX INTERACTION BETWEEN SELECT TEXTS IN EDITOR AND SIDEBAR ✔
   // 1. Add select text feature ✔ NEED TO REFACTOR IT AND CHANGE LOGIC BEHIND IT
   // 2. Add text to editor on select ✔
@@ -26,12 +26,19 @@ export default function Dashboard() {
   const { texts } = useFirebaseContext();
   const [selectedText, setSelectedText] = useState<string | boolean>(false);
 
-  const editorText = useMemo(() => (texts as IText[]).find((text: IText) => text.id === selectedText), [selectedText, texts])
+  const editorText = useMemo(
+    () => (texts as IText[]).find((text: IText) => text.id === selectedText),
+    [selectedText, texts]
+  );
 
   return (
     <div className='dashboard-content'>
       <Editor text={editorText} />
-      <TextsBar texts={texts as IText[]} selectedText={selectedText} setSelectedText={setSelectedText} />
+      <TextsBar
+        texts={texts as IText[]}
+        selectedText={selectedText}
+        setSelectedText={setSelectedText}
+      />
     </div>
-  )
+  );
 }
