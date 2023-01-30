@@ -19,6 +19,11 @@
     background-size: cover;
   }
 
+  /* MOBILE CONTENT HEIGHT */
+  .mobile-content-h {
+    @apply h-[calc(100vh-81.4625px)];
+  }
+
   /* MARQUEE TEXT  */
   .marquee-text {
     @apply text-4xl mx-4;

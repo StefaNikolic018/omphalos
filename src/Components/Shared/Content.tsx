@@ -9,8 +9,6 @@ import bg from '../../assets/background.jpg';
 import FirebaseContextProvider from '../../Context/Firebase/FirebaseContext';
 import useGlobalContext from '../../Context/Global/useGlobalContext';
 
-
-
 export default function Content({ children }: { children: React.ReactNode }) {
   const { dark, isInit } = useGlobalContext();
 
@@ -21,13 +19,13 @@ export default function Content({ children }: { children: React.ReactNode }) {
         {!isInit ? (
           <Loader />
         ) : (
-          <div className='flex flex-row home dark:home-black'>
+          <div className='flex flex-col md:flex-row home dark:home-black'>
             <Sidebar />
             <div className='relative w-full'>
               <img
                 src={bg}
                 alt='Bg'
-                className='absolute top-0 left-0 w-full h-screen opacity-10 dark:opacity-[3%] z-0'
+                className='absolute top-0 left-0 w-full mobile-content-h md:h-screen opacity-10 dark:opacity-[3%] z-0'
               />
               <Snowfall
                 snowflakeCount={25}
