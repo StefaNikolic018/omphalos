@@ -18,6 +18,7 @@ const index = ({ text }: { text: IText | undefined }) => {
       <input
         type='text'
         value={text?.name}
+        placeholder='Name your story'
         className='text-black dark:text-white dark:bg-[#ffffff1e] bg-[#00000020] absolute top-0 rounded-t-xl px-3 py-1 w-full text-center uppercase text-lg font-bold focus-visible:outline-0'
       />
       <ReactQuill

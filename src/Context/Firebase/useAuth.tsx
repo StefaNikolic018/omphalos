@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useCallback } from 'react';
-import { useNavigate } from 'react-router-dom';
 import {
   getAuth,
   signInWithEmailAndPassword,
@@ -11,11 +10,8 @@ import {
 
 import useDb from './useDb';
 
-
-
 export default function useAuth() {
   const { app, texts, getTexts } = useDb();
-  const navigate = useNavigate()
 
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
@@ -84,10 +80,8 @@ export default function useAuth() {
       setUser(user);
       getTexts();
       setIsPending(false);
-    })
-  }
-    , [])
-
+    });
+  }, []);
 
   return { user, isPending, texts, register, login, logout, googleLogin };
 }

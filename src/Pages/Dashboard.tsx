@@ -22,6 +22,8 @@ export default function Dashboard() {
   // 11. Look how the editor saves formatted text and show it formatted - on change is adding html tags, so we save it like that
   // 12. Memoize the components for future use with React.memo ✔
   // 13. Rewrite all of Tailwind inline classes to utility classes in css file ✔
+  // 14. Refactor Contexts, separate them, we need to be able to use useDb everywhere instead just in firebase context!!!
+  // 15. https://stackoverflow.com/questions/59045233/firebase-firestore-timestamp-to-formatted-date - Format date in the UI based on the answer!!!
 
   const { texts } = useFirebaseContext();
   const [selectedText, setSelectedText] = useState<string | boolean>(false);

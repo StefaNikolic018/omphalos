@@ -1,8 +1,13 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, useId } from 'react';
 
 import { initializeApp } from 'firebase/app';
 // import { getAnalytics } from 'firebase/analytics';
-import { getFirestore, collection, getDocs } from 'firebase/firestore/lite';
+import {
+  getFirestore,
+  collection,
+  getDocs,
+  addDoc,
+} from 'firebase/firestore/lite';
 
 import { IText } from 'src/interfaces/texts';
 
@@ -30,13 +35,41 @@ const db = getFirestore(app);
 
 export default function useDb() {
   const [texts, setTexts] = useState<IText[] | unknown>([]);
+
+  const textsCollection = collection(db, 'texts');
   // Get all texts
   const getTexts = useCallback(async () => {
-    const textsCol = collection(db, 'texts');
-    const textsSnapshot = await getDocs(textsCol);
+    const textsSnapshot = await getDocs(textsCollection);
     const textsList = textsSnapshot.docs.map((doc) => doc.data());
     setTexts(textsList);
   }, [setTexts]);
+
+  // TODO: Test the function and work on the the update function because the text needs to be onChange
+  const addNewText = useCallback(async (text: IText, userId: string) => {
+    const id = useId();
+    try {
+      await addDoc(textsCollection, {
+        body: text.body,
+        created: {
+          seconds: Math.round(Date.now() / 1000),
+          nanoseconds: Math.round(Date.now() / 1000000),
+        },
+        id: id,
+        last_edited: {
+          seconds: Math.round(Date.now() / 1000),
+          nanoseconds: Math.round(Date.now() / 1000000),
+        },
+        name: text.name,
+        rhymes: [],
+        searches: [],
+        user_id: userId,
+        whole: text.body,
+      });
+      console.log('New text added!');
+    } catch (error) {
+      console.log('Error with adding a new text: ', error);
+    }
+  }, []);
 
   return { app, db, getTexts, texts };
 }
