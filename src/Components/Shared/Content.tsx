@@ -2,12 +2,12 @@ import React from 'react';
 import Snowfall from 'react-snowfall';
 import { ToastContainer } from 'react-toastify';
 
-import Loader from '../ThemeLoader';
 import Sidebar from '../Sidebar';
+import Loader from '../ThemeLoader';
 import bg from '../../assets/background.jpg';
 
-import FirebaseContextProvider from '../../Context/Firebase/FirebaseContext';
 import useGlobalContext from '../../Context/Global/useGlobalContext';
+import FirebaseContextProvider from '../../Context/Firebase/FirebaseContext';
 
 export default function Content({ children }: { children: React.ReactNode }) {
   const { dark, isInit } = useGlobalContext();

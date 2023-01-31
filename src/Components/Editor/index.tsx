@@ -1,4 +1,4 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState, useCallback, memo } from 'react';
 
 import ReactQuill from 'react-quill';
 
@@ -7,7 +7,7 @@ import { IText } from 'src/interfaces/texts';
 import 'react-quill/dist/quill.snow.css';
 import '../../css/quill.css';
 
-export default function index({ text }: { text: IText | undefined }) {
+const index = ({ text }: { text: IText | undefined }) => {
   // TODO:
   // 1. Create custom hook for adding new text
   // 2. Create input for title of the text
@@ -28,4 +28,6 @@ export default function index({ text }: { text: IText | undefined }) {
       />
     </div>
   );
-}
+};
+
+export default memo(index);

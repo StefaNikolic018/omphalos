@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { memo } from 'react';
 import useGlobalContext from '../../Context/Global/useGlobalContext';
 
-export default function ModeSwitch() {
+const ModeSwitch = () => {
   const { dark, setDark } = useGlobalContext();
   return (
     <input
@@ -11,4 +11,6 @@ export default function ModeSwitch() {
       onChange={() => setDark((prev) => !prev)}
     />
   );
-}
+};
+
+export default memo(ModeSwitch);

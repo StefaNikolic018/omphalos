@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-export default function Marquee() {
+const Marquee = () => {
   return (
     <>
       <div className='text-9xl absolute -bottom-3 dark:text-neutral-100 text-zinc-900  overflow-hidden animate-pulse'>
@@ -35,4 +35,6 @@ export default function Marquee() {
       </div>
     </>
   );
-}
+};
+
+export default memo(Marquee);

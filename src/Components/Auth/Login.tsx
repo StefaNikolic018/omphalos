@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { FcGoogle } from 'react-icons/fc';
 
 import Blob from '../Shared/Blob';
 
 import useFirebaseContext from '../../Context/Firebase/useFirebaseContext';
 
-export default function Login() {
+const Login = () => {
   const { googleLogin } = useFirebaseContext();
 
   return (
@@ -21,4 +21,6 @@ export default function Login() {
       </div>
     </div>
   );
-}
+};
+
+export default memo(Login);

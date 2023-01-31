@@ -1,47 +1,12 @@
+import React, { memo } from 'react';
 import ModeSwitch from './ModeSwitch';
 import Tooltip from '../Shared/Tooltip';
 import useFirebaseContext from '../../Context/Firebase/useFirebaseContext';
 
-import logo from '../../assets/omphalos-logo-custom.png';
 import { BiLogOutCircle } from 'react-icons/bi';
+import logo from '../../assets/omphalos-logo-custom.png';
 
-// import { AiOutlineLogin, AiOutlineUserAdd } from 'react-icons/ai';
-
-// interface navItem {
-//   text: string;
-//   url: string;
-//   icon: ReactNode;
-// }
-
-// const navItems = {
-//   guest: [
-//     {
-//       text: 'Login',
-//       url: '/',
-//       icon: (
-//         <AiOutlineLogin className='text-5xl dark:text-neutral-100 group-hover:text-orange-400' />
-//       ),
-//     },
-//   ],
-//   user: [],
-// };
-
-// const renderNav = (items: navItem[]) => {
-//   return items.map((i) => (
-//     <li key={i.text}>
-//       <Tooltip text={i.text}>
-//         <Link
-//           className='w-2/3 mx-auto rounded-3xl mb-3 bg-gray-300 dark:bg-zinc-800 hover:bg-gray-300 dark:hover:bg-zinc-700 px-3 hover:rounded-2xl transition-all duration-200 ease-liner hover:text-orange-600 dark:hover:text-orange-600 dark:shadow-zinc-400 hover:shadow-sm flex justify-center group'
-//           to={i.url}
-//         >
-//           {i.icon}
-//         </Link>
-//       </Tooltip>
-//     </li>
-//   ));
-// };
-
-export default function index() {
+const index = () => {
   const { user, logout } = useFirebaseContext();
   return (
     <div className='flex flex-row justify-between items-center md:flex-col md:h-screen p-3 w-30 bg-neutral-100 dark:bg-zinc-900 dark:text-neutral-100 text-zinc-900 shadow-md md:dark:shadow-neutral-100 md:shadow-zinc-900'>
@@ -87,4 +52,6 @@ export default function index() {
       </div>
     </div>
   );
-}
+};
+
+export default memo(index);

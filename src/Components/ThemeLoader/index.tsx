@@ -1,13 +1,14 @@
-import React, { useCallback } from 'react';
+import React, { useCallback, memo } from 'react';
 import Snowfall from 'react-snowfall';
 
 import Marquee from './Marquee';
 
-import logo from '../../assets/omphalos-logo-custom.png';
-import useGlobalContext from '../../Context/Global/useGlobalContext';
 import { storageInsert } from '../../utils/storage';
 
-export default function index() {
+import logo from '../../assets/omphalos-logo-custom.png';
+import useGlobalContext from '../../Context/Global/useGlobalContext';
+
+const index = () => {
   const { dark, setDark, setIsInit } = useGlobalContext();
 
   const closeIntro = useCallback(() => {
@@ -36,4 +37,6 @@ export default function index() {
       <Marquee />
     </div>
   );
-}
+};
+
+export default memo(index);

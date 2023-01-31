@@ -1,7 +1,7 @@
-import React, { useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 import { IText } from 'src/interfaces/texts';
 
-export default function index({
+const index = ({
   texts,
   selectedText,
   setSelectedText,
@@ -9,7 +9,7 @@ export default function index({
   texts: IText[];
   selectedText: string | boolean;
   setSelectedText: React.Dispatch<React.SetStateAction<any>>;
-}) {
+}) => {
   console.log(texts);
 
   const renderTexts = useMemo(
@@ -42,4 +42,6 @@ export default function index({
       {renderTexts}
     </div>
   );
-}
+};
+
+export default memo(index);
