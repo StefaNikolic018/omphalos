@@ -71,5 +71,5 @@ export default function useDb() {
     }
   }, []);
 
-  return { app, db, getTexts, texts };
+  return { app, db, getTexts, texts, addNewText };
 }
