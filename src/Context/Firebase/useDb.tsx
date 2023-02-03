@@ -1,4 +1,5 @@
-import React, { useState, useCallback, useId } from 'react';
+import React, { useState, useCallback } from 'react';
+import { v4 as uuidv4 } from 'uuid';
 
 import { initializeApp } from 'firebase/app';
 // import { getAnalytics } from 'firebase/analytics';
@@ -47,7 +48,6 @@ export default function useDb() {
   // TODO: Test the function and work on the the update function because the text needs to be onChange
   const addNewText = useCallback(
     async (name: string, body: string, userId: string) => {
-      const id = useId();
       try {
         await addDoc(textsCollection, {
           body: body,
@@ -55,7 +55,7 @@ export default function useDb() {
             seconds: Math.round(Date.now() / 1000),
             nanoseconds: Math.round(Date.now() / 1000000),
           },
-          id: id,
+          id: uuidv4(),
           last_edited: {
             seconds: Math.round(Date.now() / 1000),
             nanoseconds: Math.round(Date.now() / 1000000),

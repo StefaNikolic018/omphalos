@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@types/uuid": "^9.0.0",
     "dotenv": "^16.0.3",
     "firebase": "^9.13.0",
     "react": "^18.2.0",
@@ -21,7 +22,8 @@
     "react-router-dom": "^6.4.2",
     "react-scripts": "^5.0.1",
     "react-snowfall": "^1.2.1",
-    "react-toastify": "^9.1.1"
+    "react-toastify": "^9.1.1",
+    "uuid": "^9.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",

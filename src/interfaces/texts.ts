@@ -7,6 +7,12 @@ type TSearches = {
   count: number;
   name: string;
 };
+
+export type CurrentTextT = {
+  body: string | undefined;
+  name: string | undefined;
+  id: string | undefined;
+};
 export interface IText {
   body: string;
   created: { seconds: number; nanoseconds: number };

@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 
-import { IText } from 'src/interfaces/texts';
+import { IText, CurrentTextT } from 'src/interfaces/texts';
 
 import Editor from '../Components/Editor';
 import TextsBar from '../Components/TextsBar';
@@ -26,19 +26,18 @@ export default function Dashboard() {
   // 15. https://stackoverflow.com/questions/59045233/firebase-firestore-timestamp-to-formatted-date - Format date in the UI based on the answer!!!
 
   const { texts } = useFirebaseContext();
-  const [selectedText, setSelectedText] = useState<string | boolean>(false);
-
-  const editorText = useMemo(
-    () => (texts as IText[]).find((text: IText) => text.id === selectedText),
-    [selectedText, texts]
-  );
+  const [selectedText, setSelectedText] = useState<CurrentTextT>({
+    body: undefined,
+    name: undefined,
+    id: undefined,
+  });
 
   return (
     <div className='dashboard-content'>
-      <Editor text={editorText} />
+      <Editor text={selectedText} />
       <TextsBar
         texts={texts as IText[]}
-        selectedText={selectedText}
+        selectedTextID={selectedText.id}
         setSelectedText={setSelectedText}
       />
     </div>
