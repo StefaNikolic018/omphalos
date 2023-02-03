@@ -45,31 +45,34 @@ export default function useDb() {
   }, [setTexts]);
 
   // TODO: Test the function and work on the the update function because the text needs to be onChange
-  const addNewText = useCallback(async (text: IText, userId: string) => {
-    const id = useId();
-    try {
-      await addDoc(textsCollection, {
-        body: text.body,
-        created: {
-          seconds: Math.round(Date.now() / 1000),
-          nanoseconds: Math.round(Date.now() / 1000000),
-        },
-        id: id,
-        last_edited: {
-          seconds: Math.round(Date.now() / 1000),
-          nanoseconds: Math.round(Date.now() / 1000000),
-        },
-        name: text.name,
-        rhymes: [],
-        searches: [],
-        user_id: userId,
-        whole: text.body,
-      });
-      console.log('New text added!');
-    } catch (error) {
-      console.log('Error with adding a new text: ', error);
-    }
-  }, []);
+  const addNewText = useCallback(
+    async (name: string, body: string, userId: string) => {
+      const id = useId();
+      try {
+        await addDoc(textsCollection, {
+          body: body,
+          created: {
+            seconds: Math.round(Date.now() / 1000),
+            nanoseconds: Math.round(Date.now() / 1000000),
+          },
+          id: id,
+          last_edited: {
+            seconds: Math.round(Date.now() / 1000),
+            nanoseconds: Math.round(Date.now() / 1000000),
+          },
+          name: name,
+          rhymes: [],
+          searches: [],
+          user_id: userId,
+          whole: body,
+        });
+        console.log('New text added!');
+      } catch (error) {
+        console.log('Error with adding a new text: ', error);
+      }
+    },
+    []
+  );
 
   return { app, db, getTexts, texts, addNewText };
 }

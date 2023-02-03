@@ -11,7 +11,7 @@ import {
 import useDb from './useDb';
 
 export default function useAuth() {
-  const { app, texts, getTexts } = useDb();
+  const { app, texts, getTexts, addNewText } = useDb();
 
   const auth = getAuth(app);
   const provider = new GoogleAuthProvider();
@@ -83,5 +83,14 @@ export default function useAuth() {
     });
   }, []);
 
-  return { user, isPending, texts, register, login, logout, googleLogin };
+  return {
+    user,
+    isPending,
+    texts,
+    register,
+    login,
+    logout,
+    googleLogin,
+    addNewText,
+  };
 }
