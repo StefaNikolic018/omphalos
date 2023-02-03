@@ -42,7 +42,9 @@ const index = ({
       >
         Add new
       </button>
-      <div className='flex gap-3 flex-row flex-wrap h-[90%]'>{renderTexts}</div>
+      <div className='grid grid-cols-2 grid-rows-4 grid-flow-row gap-2 h-[90%]'>
+        {renderTexts}
+      </div>
     </div>
   );
 };
