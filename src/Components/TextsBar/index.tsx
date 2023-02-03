@@ -12,7 +12,8 @@ const index = ({
   selectedTextID: string | undefined;
   setSelectedText: React.Dispatch<React.SetStateAction<any>>;
 }) => {
-  console.log(texts);
+  // TODO:
+  // 1. Fix flex spacing or change it for the grid because it has huge spacing between rows
 
   const renderTexts = useMemo(
     () =>
@@ -26,7 +27,6 @@ const index = ({
       )),
     [setSelectedText, selectedTextID, texts]
   );
-  console.log(selectedTextID);
 
   return (
     <div className='w-[35%] h-[80%] z-20 p-2 border-2 dark:border-[#ffffffdb] border-zinc-700 rounded-xl bg-[#ffffff72] dark:bg-zinc-900  flex flex-col flex-wrap'>
@@ -42,7 +42,7 @@ const index = ({
       >
         Add new
       </button>
-      <div className='flex justify-center gap-3 flex-row'>{renderTexts}</div>
+      <div className='flex gap-3 flex-row flex-wrap h-[90%]'>{renderTexts}</div>
     </div>
   );
 };
