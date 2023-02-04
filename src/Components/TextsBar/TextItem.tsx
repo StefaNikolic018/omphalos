@@ -27,7 +27,8 @@ export function TextItem({
       <h1 className='font-bold text-sm'>{text.name}</h1>
       <hr />
       <p className='opacity-80 text-xs whitespace-pre-wrap truncate'>
-        {text.body}
+        {/* STRIP OF HTML */}
+        {text.body.replace(/(<([^>]+)>)/gi, '')}
       </p>
     </div>
   );

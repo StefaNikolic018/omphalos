@@ -1,4 +1,4 @@
-import React, { useRef, useCallback, memo } from 'react';
+import React, { useRef, useCallback, memo, useEffect } from 'react';
 
 import ReactQuill from 'react-quill';
 
@@ -23,7 +23,12 @@ const index = ({ text }: { text: CurrentTextT }) => {
     addNewText(nameRef.current?.value!, bodyRef.current.value, user.uid);
   }, [nameRef.current?.value, bodyRef.current?.value, user.uid]);
 
-  // console.log('curr: ', text);
+  // If user starts with the new text
+  useEffect(() => {
+    if (text.name === '') {
+      nameRef.current?.focus();
+    }
+  }, [text.name]);
 
   return (
     <div className='w-7/12 h-[80%] z-10 relative'>
@@ -34,6 +39,7 @@ const index = ({ text }: { text: CurrentTextT }) => {
         placeholder='Name your story'
         className='text-black dark:text-white dark:bg-[#ffffff1e] bg-[#00000020] absolute top-0 rounded-t-xl px-3 py-1 w-full text-center uppercase text-lg font-bold focus-visible:outline-0'
         ref={nameRef}
+        autoFocus
       />
       <button
         className='absolute py-1.5 px-3 bg-orange-500 hover:bg-orange-400 text-zinc-800 right-0.5 top-9 '
