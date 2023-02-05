@@ -42,7 +42,7 @@ const index = ({ text }: { text: CurrentTextT }) => {
         autoFocus
       />
       <button
-        className='absolute py-1.5 px-3 bg-orange-500 hover:bg-orange-400 text-zinc-800 right-0.5 top-9 '
+        className='absolute py-2 px-3 bg-orange-500 hover:bg-orange-400 text-zinc-800 right-[0.2%] top-9 '
         onClick={submitText}
       >
         SUBMIT
