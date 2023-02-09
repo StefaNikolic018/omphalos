@@ -1,5 +1,5 @@
 import { TextItem } from './TextItem';
-import React, { memo, useMemo } from 'react';
+import React, { memo, useCallback, useMemo } from 'react';
 
 import { IText } from 'src/interfaces/texts';
 
@@ -28,17 +28,21 @@ const index = ({
     [setSelectedText, selectedTextID, texts]
   );
 
+  const resetText = useCallback(
+    () =>
+      setSelectedText({
+        body: undefined,
+        name: '',
+        id: undefined,
+      }),
+    []
+  );
+
   return (
     <div className='w-[35%] h-[80%] z-20 p-2 border-2 dark:border-[#ffffffdb] border-zinc-700 rounded-xl bg-[#ffffff72] dark:bg-zinc-900  flex flex-col flex-wrap'>
       <button
         className='text-center block py-1 mb-2 border-2 dark:border-[#ffffffdb] border-zinc-700 rounded-xl text-black dark:text-white hover:bg-orange-500 transition-colors duration-200 w-full'
-        onClick={() =>
-          setSelectedText({
-            body: undefined,
-            name: '',
-            id: undefined,
-          })
-        }
+        onClick={resetText}
       >
         Add new
       </button>

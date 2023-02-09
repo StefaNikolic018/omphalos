@@ -1,19 +1,23 @@
-import React, { useRef, useCallback, memo, useEffect } from 'react';
-
+import React, { useRef, useCallback, memo, useEffect, useState } from 'react';
 import ReactQuill from 'react-quill';
 
 import { CurrentTextT } from 'src/interfaces/texts';
 
+import useAuth from '../../Context/Firebase/useAuth';
+
 import 'react-quill/dist/quill.snow.css';
 import '../../css/quill.css';
-import useAuth from '../../Context/Firebase/useAuth';
 
 const index = ({ text }: { text: CurrentTextT }) => {
   // TODO:
   // 1. Create logic for adding new text ✔
   // 2. Create input for title of the text ✔
-  // 3. Install react hook form and add validation to texts
+  // 3. Install react hook form ✔
+  // 4. and add validation to texts(problem with registering quill) ✔
+  // 5. because of the problem with quill, need to implement own custom validation
   const { user, addNewText } = useAuth();
+
+  const [isValid, setIsValid] = useState(false);
 
   // References for input fields
   const nameRef = useRef<HTMLInputElement>(null);
@@ -42,8 +46,13 @@ const index = ({ text }: { text: CurrentTextT }) => {
         autoFocus
       />
       <button
-        className='absolute py-2 px-3 bg-orange-500 hover:bg-orange-400 text-zinc-800 right-[0.2%] top-9 '
+        className={`absolute py-2 px-3 text-zinc-800 right-[0.2%] top-9 ${
+          // isValid ?
+          'bg-orange-500 hover:bg-orange-400 cursor-pointer'
+          // : 'bg-orange-400'
+        }`}
         onClick={submitText}
+        // disabled={!isValid}
       >
         SUBMIT
       </button>
