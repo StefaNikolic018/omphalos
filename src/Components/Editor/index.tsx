@@ -17,14 +17,19 @@ const index = ({ text }: { text: CurrentTextT }) => {
   // 5. because of the problem with quill, need to implement own custom validation
   const { user, addNewText } = useAuth();
 
-  const [isValid, setIsValid] = useState(false);
+  const [isValid, setIsValid] = useState(true);
 
   // References for input fields
   const nameRef = useRef<HTMLInputElement>(null);
   const bodyRef = useRef<any>(null);
 
   const submitText = useCallback(() => {
-    addNewText(nameRef.current?.value!, bodyRef.current.value, user.uid);
+    if (nameRef.current?.value !== '' && bodyRef.current?.value !== '') {
+      setIsValid(true);
+      addNewText(nameRef.current?.value!, bodyRef.current.value, user.uid);
+    } else {
+      setIsValid(false);
+    }
   }, [nameRef.current?.value, bodyRef.current?.value, user.uid]);
 
   // If user starts with the new text
@@ -61,9 +66,14 @@ const index = ({ text }: { text: CurrentTextT }) => {
         className='bg-[#ffffffdb] dark:bg-zinc-900  border-2 dark:border-[#ffffffdb]  border-zinc-700 text-black dark:text-white rounded-xl w-full h-full pt-8'
         placeholder='Enter your story here'
         theme='snow'
-        value={text.body}
+        value={text.body ? text.body : bodyRef.current?.value}
         ref={bodyRef}
       />
+      {!isValid && (
+        <div className='w-full text-center text-orange-800 font-bold text-xl mt-2 animate-pulse absolute bottom-2'>
+          Please fill out all fields and tell us your story properly!
+        </div>
+      )}
     </div>
   );
 };
