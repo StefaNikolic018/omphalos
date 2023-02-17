@@ -15,7 +15,7 @@ const index = ({ text }: { text: CurrentTextT }) => {
   // 3. Install react hook form ✔
   // 4. and add validation to texts(problem with registering quill) ✔
   // 5. because of the problem with quill, need to implement own custom validation ✔
-  // 6. Need to put texts bar to the top and add word search functionality on the side!!!
+  // 6. Need to put texts bar to the top and add word search functionality on the right side!!!
 
   const { user, addNewText } = useAuth();
 
