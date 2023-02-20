@@ -73,7 +73,7 @@ const index = ({ text }: { text: CurrentTextT }) => {
       />
       {!isValid && (
         <div className='w-full text-center text-orange-800 font-bold text-xl mt-2 animate-pulse absolute bottom-2'>
-          Please fill out all fields and tell us your story properly!
+          Please tell us your story properly!
         </div>
       )}
     </div>
