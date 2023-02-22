@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo } from 'react';
+import React, { memo, useMemo } from 'react';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 
@@ -15,7 +15,7 @@ import Slide from './Slide';
 
 import { IText } from 'src/interfaces/texts';
 
-export default function index({
+const index = ({
   texts,
   selectedTextID,
   setSelectedText,
@@ -23,7 +23,7 @@ export default function index({
   texts: IText[];
   selectedTextID: string | undefined;
   setSelectedText: React.Dispatch<React.SetStateAction<any>>;
-}) {
+}) => {
   const renderTexts = useMemo(
     () =>
       texts.map((text: IText) => (
@@ -66,4 +66,6 @@ export default function index({
       </Swiper>
     </>
   );
-}
+};
+
+export default memo(index);

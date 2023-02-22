@@ -1,9 +1,8 @@
-import React from 'react';
-import { SwiperSlide } from 'swiper/react';
+import React, { memo } from 'react';
 
 import { IText } from 'src/interfaces/texts';
 
-export default function Slide({ text }: { text: IText }) {
+const Slide = ({ text }: { text: IText }) => {
   return (
     <>
       <div className='h-full w-full flex flex-col'>
@@ -20,4 +19,5 @@ export default function Slide({ text }: { text: IText }) {
       </div>
     </>
   );
-}
+};
+export default memo(Slide);
