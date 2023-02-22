@@ -42,7 +42,7 @@ const index = ({ text }: { text: CurrentTextT }) => {
   }, [text.name]);
 
   return (
-    <div className='w-7/12 h-[80%] z-10 relative'>
+    <div className='w-[65%] h-full z-10 relative'>
       <input
         id='text-name'
         type='text'

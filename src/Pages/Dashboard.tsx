@@ -3,6 +3,7 @@ import React, { useState, useMemo } from 'react';
 import { IText, CurrentTextT } from 'src/interfaces/texts';
 
 import Editor from '../Components/Editor';
+import ActionBar from '../Components/ActionBar';
 import TextsBar from '../Components/TextsBar';
 import useFirebaseContext from '../Context/Firebase/useFirebaseContext';
 
@@ -34,12 +35,15 @@ export default function Dashboard() {
 
   return (
     <div className='dashboard-content'>
-      <Editor text={selectedText} />
       <TextsBar
         texts={texts as IText[]}
         selectedTextID={selectedText.id}
         setSelectedText={setSelectedText}
       />
+      <div className='flex flex-row h-full w-full gap-5 my-3'>
+        <Editor text={selectedText} />
+        <ActionBar />
+      </div>
     </div>
   );
 }

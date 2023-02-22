@@ -35,6 +35,6 @@
 
   /* DASHBOARD */
   .dashboard-content {
-    @apply flex flex-row justify-around items-center h-full;
+    @apply flex flex-col justify-around items-center w-[93%] h-full p-5;
   }
 }
