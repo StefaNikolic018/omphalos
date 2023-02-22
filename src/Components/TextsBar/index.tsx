@@ -7,6 +7,8 @@ import { IText } from 'src/interfaces/texts';
 
 import Swiper from './Swiper/Swiper';
 
+// TODO: CLEAN THIS CODE AND MEMOIZE IT
+
 const index = ({
   texts,
   selectedTextID,
