@@ -7,8 +7,6 @@ import { IText } from 'src/interfaces/texts';
 import { HiSearchCircle } from 'react-icons/hi';
 import { BsFillPlusSquareFill } from 'react-icons/bs';
 
-// TODO: CLEAN THIS CODE AND MEMOIZE IT
-
 const index = ({
   texts,
   selectedTextID,

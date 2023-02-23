@@ -49,22 +49,20 @@ const index = ({
   );
 
   return (
-    <>
-      <Swiper
-        slidesPerView={3}
-        grid={{
-          rows: 1,
-        }}
-        spaceBetween={5}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Grid, Pagination]}
-        className='mySwiper h-full'
-      >
-        {renderTexts}
-      </Swiper>
-    </>
+    <Swiper
+      slidesPerView={3}
+      grid={{
+        rows: 1,
+      }}
+      spaceBetween={5}
+      pagination={{
+        clickable: true,
+      }}
+      modules={[Grid, Pagination]}
+      className='mySwiper h-full'
+    >
+      {renderTexts}
+    </Swiper>
   );
 };
 
