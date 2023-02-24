@@ -28,7 +28,7 @@ const index = ({
 
   return (
     <div className='justify-center items-center w-full h-[20%] z-20 p-2 border-2 dark:border-[#ffffffdb] border-zinc-700 rounded-xl bg-[#ffffff72] dark:bg-zinc-900  flex flex-row flex-wrap relative'>
-      <div className='absolute top-3 -right-16 rounded-3xl p-2 flex flex-col gap-1 border dark:border-[#ffffffdb] border-zinc-700 bg-[#ffffff72] dark:bg-zinc-900'>
+      <div className='absolute top-3 -right-5 rounded-3xl p-2 flex flex-col gap-1 border dark:border-[#ffffffdb] border-zinc-700 bg-[#ffffff72] dark:bg-zinc-900'>
         <BsFillPlusSquareFill
           className=' cursor-pointer text-4xl rounded-2xl text-orange-300 hover:text-orange-400 z-30 border border-zinc-900 bg-zinc-900 hover:scale-105 transition-all duration-250 hover:shadow-md'
           onClick={resetText}

@@ -1,6 +1,7 @@
 import React, { memo } from 'react';
 
 import { IText } from 'src/interfaces/texts';
+import { formatText } from '../../../utils/formatText';
 
 const Slide = ({ text }: { text: IText }) => {
   return (
@@ -14,7 +15,7 @@ const Slide = ({ text }: { text: IText }) => {
         </div>
         <p className='text-left text-xs text-zinc-700 text-body'>
           {/* STRIP OF HTML */}
-          {text.body.replace(/(<([^>]+)>)/gi, '')}
+          {formatText(text.body)}
         </p>
       </div>
     </>

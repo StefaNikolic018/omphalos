@@ -32,6 +32,8 @@ export default function Dashboard() {
     id: undefined,
   });
 
+  const highlightWord = (text: String) => {};
+
   return (
     <div className='dashboard-content'>
       <TextsBar
@@ -41,7 +43,7 @@ export default function Dashboard() {
       />
       <div className='flex flex-row h-full w-full gap-5 my-3'>
         <Editor text={selectedText} />
-        <ActionBar />
+        <ActionBar text={selectedText.body} highlightWord={highlightWord} />
       </div>
     </div>
   );
