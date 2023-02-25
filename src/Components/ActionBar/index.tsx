@@ -21,7 +21,6 @@ const index = ({
       />
       <h3 className='my-3'>ALL WORDS COUNT: {length.toLocaleString()}</h3>
       <h3 className='my-3'>'WORD' COUNT: {length.toLocaleString()}</h3>
-      <h3 className='my-3'>'WORD' COUNT: {length.toLocaleString()}</h3>
     </div>
   );
 };
