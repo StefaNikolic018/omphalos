@@ -19,7 +19,7 @@ const index = ({
   const resetText = useCallback(
     () =>
       setSelectedText({
-        body: undefined,
+        body: '',
         name: '',
         id: undefined,
       }),
