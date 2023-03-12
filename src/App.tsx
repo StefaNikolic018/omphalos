@@ -1,14 +1,13 @@
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router-dom'
 
-import './App.css';
-import Router from './Router';
-import GlobalContextProvider from './Context/Global/GlobalContext';
-import Content from './Components/Shared/Content';
+import './App.css'
+import Router from './Router'
+import GlobalContextProvider from './Context/Global/GlobalContext'
+import Content from './Components/Shared/Content'
 
 function App() {
-
   return (
-    <div className='App'>
+    <div className="App">
       <BrowserRouter>
         <GlobalContextProvider>
           <Content>
@@ -17,7 +16,7 @@ function App() {
         </GlobalContextProvider>
       </BrowserRouter>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

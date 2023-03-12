@@ -1,11 +1,11 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo } from 'react'
 
-import { IText, CurrentTextT } from 'src/interfaces/texts';
+import { IText, CurrentTextT } from 'src/interfaces/texts'
 
-import Editor from '../Components/Editor';
-import ActionBar from '../Components/ActionBar';
-import TextsBar from '../Components/TextsBar';
-import useFirebaseContext from '../Context/Firebase/useFirebaseContext';
+import Editor from '../Components/Editor'
+import ActionBar from '../Components/ActionBar'
+import TextsBar from '../Components/TextsBar'
+import useFirebaseContext from '../Context/Firebase/useFirebaseContext'
 
 export default function Dashboard() {
   // TODO:
@@ -25,26 +25,26 @@ export default function Dashboard() {
   // 13. Rewrite all of Tailwind inline classes to utility classes in css file ✔
   // 14. Refactor Contexts, separate them, we need to be able to use useDb everywhere instead just in firebase context!!!
 
-  const { texts } = useFirebaseContext();
+  const { texts } = useFirebaseContext()
   const [selectedText, setSelectedText] = useState<CurrentTextT>({
     body: undefined,
     name: undefined,
-    id: undefined,
-  });
+    id: undefined
+  })
 
-  const highlightWord = (text: String) => {};
+  const highlightWord = (text: String) => {}
 
   return (
-    <div className='dashboard-content'>
+    <div className="dashboard-content">
       <TextsBar
         texts={texts as IText[]}
         selectedTextID={selectedText.id}
         setSelectedText={setSelectedText}
       />
-      <div className='flex flex-row h-full w-full gap-5 my-3'>
+      <div className="my-3 flex h-full w-full flex-row gap-5">
         <Editor text={selectedText} />
         <ActionBar text={selectedText.body} highlightWord={highlightWord} />
       </div>
     </div>
-  );
+  )
 }

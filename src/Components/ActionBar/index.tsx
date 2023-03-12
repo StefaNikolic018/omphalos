@@ -1,27 +1,27 @@
-import React, { memo, useMemo } from 'react';
-import { formatText } from '../../utils/formatText';
+import React, { memo, useMemo } from 'react'
+import { formatText } from '../../utils/formatText'
 
 const index = ({
   text,
-  highlightWord,
+  highlightWord
 }: {
-  text: String | undefined;
-  highlightWord: (word: String) => void;
+  text: String | undefined
+  highlightWord: (word: String) => void
 }) => {
   const length = useMemo(
     () => (!!text?.length ? formatText(text!).split(' ').length : 0),
     [text]
-  );
+  )
   return (
-    <div className='w-[35%] h-full z-20 p-2 border-2 dark:border-[#ffffffdb] border-zinc-700 rounded-xl bg-[#ffffff72] dark:bg-zinc-900  flex flex-col flex-wrap text-center'>
+    <div className="z-20 flex h-full w-[35%] flex-col flex-wrap rounded-xl border-2 border-zinc-700 bg-[#ffffff72]  p-2 text-center dark:border-[#ffffffdb] dark:bg-zinc-900">
       <input
-        type='text'
-        className='text-black dark:text-white dark:bg-[#ffffff1e] bg-[#00000020] text-xl text-center p-2 rounded-xl'
-        placeholder='Enter search words separated by comma'
+        type="text"
+        className="rounded-xl bg-[#00000020] p-2 text-center text-xl text-black dark:bg-[#ffffff1e] dark:text-white"
+        placeholder="Enter search words separated by comma"
       />
-      <h3 className='my-3'>ALL WORDS COUNT: {length.toLocaleString()}</h3>
+      <h3 className="my-3">ALL WORDS COUNT: {length.toLocaleString()}</h3>
     </div>
-  );
-};
+  )
+}
 
-export default memo(index);
+export default memo(index)

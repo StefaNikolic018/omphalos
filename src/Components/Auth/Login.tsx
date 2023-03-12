@@ -1,26 +1,26 @@
-import React, { memo } from 'react';
-import { FcGoogle } from 'react-icons/fc';
+import React, { memo } from 'react'
+import { FcGoogle } from 'react-icons/fc'
 
-import Blob from '../Shared/Blob';
+import Blob from '../Shared/Blob'
 
-import useFirebaseContext from '../../Context/Firebase/useFirebaseContext';
+import useFirebaseContext from '../../Context/Firebase/useFirebaseContext'
 
 const Login = () => {
-  const { googleLogin } = useFirebaseContext();
+  const { googleLogin } = useFirebaseContext()
 
   return (
-    <div className='dark:text-neutral-100 text-zinc-900 flex flex-col justify-center items-center w-full mobile-content-h md:min-h-screen z-10 relative'>
-      <div className='z-10 flex flex-col relative w-10/12 md:w-[40%]'>
+    <div className="mobile-content-h relative z-10 flex w-full flex-col items-center justify-center text-zinc-900 dark:text-neutral-100 md:min-h-screen">
+      <div className="relative z-10 flex w-10/12 flex-col md:w-[40%]">
         <Blob />
       </div>
       <div
-        className='absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 rounded-xl bg-[#ffffffcc] hover:bg-white dark:bg-zinc-800 dark:hover:bg-zinc-900 border-2 border-zinc-900 dark:border-[#ffffffcc] transition-all duration-150 shadow-xl cursor-pointer py-2 px-2 z-10'
+        className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 transform cursor-pointer rounded-xl border-2 border-zinc-900 bg-[#ffffffcc] py-2 px-2 shadow-xl transition-all duration-150 hover:bg-white dark:border-[#ffffffcc] dark:bg-zinc-800 dark:hover:bg-zinc-900"
         onClick={googleLogin}
       >
-        <FcGoogle className='text-3xl ' />
+        <FcGoogle className="text-3xl " />
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default memo(Login);
+export default memo(Login)

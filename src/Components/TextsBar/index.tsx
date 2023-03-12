@@ -1,39 +1,39 @@
-import React, { memo, useCallback } from 'react';
+import React, { memo, useCallback } from 'react'
 
-import Swiper from './Swiper';
+import Swiper from './Swiper'
 
-import { IText } from 'src/interfaces/texts';
+import { IText } from 'src/interfaces/texts'
 
-import { HiSearchCircle } from 'react-icons/hi';
-import { BsFillPlusSquareFill } from 'react-icons/bs';
+import { HiSearchCircle } from 'react-icons/hi'
+import { BsFillPlusSquareFill } from 'react-icons/bs'
 
 const index = ({
   texts,
   selectedTextID,
-  setSelectedText,
+  setSelectedText
 }: {
-  texts: IText[];
-  selectedTextID: string | undefined;
-  setSelectedText: React.Dispatch<React.SetStateAction<any>>;
+  texts: IText[]
+  selectedTextID: string | undefined
+  setSelectedText: React.Dispatch<React.SetStateAction<any>>
 }) => {
   const resetText = useCallback(
     () =>
       setSelectedText({
         body: '',
         name: '',
-        id: undefined,
+        id: undefined
       }),
     []
-  );
+  )
 
   return (
-    <div className='justify-center items-center w-full h-[20%] z-20 p-2 border-2 dark:border-[#ffffffdb] border-zinc-700 rounded-xl bg-[#ffffff72] dark:bg-zinc-900  flex flex-row flex-wrap relative'>
-      <div className='absolute top-3 -right-5 rounded-3xl p-2 flex flex-col gap-1 border dark:border-[#ffffffdb] border-zinc-700 bg-[#ffffff72] dark:bg-zinc-900'>
+    <div className="relative z-20 flex h-[20%] w-full flex-row flex-wrap items-center justify-center rounded-xl border-2 border-zinc-700  bg-[#ffffff72] p-2 dark:border-[#ffffffdb] dark:bg-zinc-900">
+      <div className="absolute top-3 -right-5 flex flex-col gap-1 rounded-3xl border border-zinc-700 bg-[#ffffff72] p-2 dark:border-[#ffffffdb] dark:bg-zinc-900">
         <BsFillPlusSquareFill
-          className=' cursor-pointer text-4xl rounded-2xl text-orange-300 hover:text-orange-400 z-30 border border-zinc-900 bg-zinc-900 hover:scale-105 transition-all duration-250 hover:shadow-md'
+          className=" duration-250 z-30 cursor-pointer rounded-2xl border border-zinc-900 bg-zinc-900 text-4xl text-orange-300 transition-all hover:scale-105 hover:text-orange-400 hover:shadow-md"
           onClick={resetText}
         />
-        <HiSearchCircle className=' cursor-pointer text-4xl rounded-2xl bg-orange-100 hover:bg-orange-200 border border-zinc-900 z-30 text-zinc-900 hover:scale-105 transition-all duration-250 hover:shadow-md' />
+        <HiSearchCircle className=" duration-250 z-30 cursor-pointer rounded-2xl border border-zinc-900 bg-orange-100 text-4xl text-zinc-900 transition-all hover:scale-105 hover:bg-orange-200 hover:shadow-md" />
       </div>
       <Swiper
         texts={texts}
@@ -41,7 +41,7 @@ const index = ({
         setSelectedText={setSelectedText}
       />
     </div>
-  );
-};
+  )
+}
 
-export default memo(index);
+export default memo(index)

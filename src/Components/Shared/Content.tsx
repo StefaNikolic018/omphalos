@@ -1,31 +1,31 @@
-import React from 'react';
-import Snowfall from 'react-snowfall';
-import { ToastContainer } from 'react-toastify';
+import React from 'react'
+import Snowfall from 'react-snowfall'
+import { ToastContainer } from 'react-toastify'
 
-import Sidebar from '../Sidebar';
-import Loader from '../ThemeLoader';
-import bg from '../../assets/background.jpg';
+import Sidebar from '../Sidebar'
+import Loader from '../ThemeLoader'
+import bg from '../../assets/background.jpg'
 
-import useGlobalContext from '../../Context/Global/useGlobalContext';
-import FirebaseContextProvider from '../../Context/Firebase/FirebaseContext';
+import useGlobalContext from '../../Context/Global/useGlobalContext'
+import FirebaseContextProvider from '../../Context/Firebase/FirebaseContext'
 
 export default function Content({ children }: { children: React.ReactNode }) {
-  const { dark, isInit } = useGlobalContext();
+  const { dark, isInit } = useGlobalContext()
 
   return (
     <FirebaseContextProvider>
-      <div className='relative dark:bg-zinc-900 w-screen overflow-x-hidden min-h-screen'>
+      <div className="relative min-h-screen w-screen overflow-x-hidden dark:bg-zinc-900">
         <ToastContainer />
         {!isInit ? (
           <Loader />
         ) : (
-          <div className='flex flex-col md:flex-row home dark:home-black'>
+          <div className="home dark:home-black flex flex-col md:flex-row">
             <Sidebar />
-            <div className='relative w-full'>
+            <div className="relative w-full">
               <img
                 src={bg}
-                alt='Bg'
-                className='absolute top-0 left-0 w-full mobile-content-h md:h-screen opacity-10 dark:opacity-[3%] z-0'
+                alt="Bg"
+                className="mobile-content-h absolute top-0 left-0 z-0 w-full opacity-10 dark:opacity-[3%] md:h-screen"
               />
               <Snowfall
                 snowflakeCount={25}
@@ -38,5 +38,5 @@ export default function Content({ children }: { children: React.ReactNode }) {
         )}
       </div>
     </FirebaseContextProvider>
-  );
+  )
 }
