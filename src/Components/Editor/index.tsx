@@ -26,7 +26,7 @@ const index = ({ text }: { text: CurrentTextT }) => {
   const bodyRef = useRef<any>(null)
 
   const submitText = useCallback(() => {
-    if (nameRef.current?.value !== '' && bodyRef.current?.value !== '') {
+    if (nameRef.current?.value && bodyRef.current?.value) {
       setIsValid(true)
       addNewText(nameRef.current?.value!, bodyRef.current.value, user.uid)
     } else {
@@ -36,7 +36,7 @@ const index = ({ text }: { text: CurrentTextT }) => {
 
   // If user starts with the new text
   useEffect(() => {
-    if (text.name === '') {
+    if (!text.name) {
       nameRef.current?.focus()
     }
   }, [text.name])
