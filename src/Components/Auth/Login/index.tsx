@@ -1,9 +1,9 @@
 import React, { memo } from 'react'
 import { FcGoogle } from 'react-icons/fc'
 
-import Blob from '../Shared/Blob'
+import Blob from '../../Shared/Blob'
 
-import useFirebaseContext from '../../Context/Firebase/useFirebaseContext'
+import useFirebaseContext from '../../../Context/Firebase/useFirebaseContext'
 
 const Login = () => {
   const { googleLogin } = useFirebaseContext()
