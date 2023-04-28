@@ -15,7 +15,7 @@ const index = ({ text }: { text: CurrentTextT }) => {
   // 3. Install react hook form ✔
   // 4. and add validation to texts(problem with registering quill) ✔
   // 5. because of the problem with quill, need to implement own custom validation ✔
-  // 6. Need to put texts bar to the top and add word search functionality on the right side!!!!
+  // 6. Need to put texts bar to the top and add word search functionality on the right side!!!! ✔
 
   const { user, addNewText } = useAuth()
 
@@ -48,7 +48,7 @@ const index = ({ text }: { text: CurrentTextT }) => {
         type="text"
         defaultValue={text.name}
         placeholder="Name your story"
-        className="absolute top-0 w-full rounded-t-xl bg-[#00000020] px-3 py-1 text-center text-lg font-bold uppercase text-black focus-visible:outline-0 dark:bg-[#ffffff1e] dark:text-white"
+        className="absolute top-0 w-full rounded-t-3xl bg-[#00000020] px-3 py-1 text-center text-lg font-bold uppercase text-black focus-visible:outline-0 dark:bg-[#ffffff1e] dark:text-white"
         ref={nameRef}
         autoFocus
       />
@@ -65,7 +65,7 @@ const index = ({ text }: { text: CurrentTextT }) => {
       </button>
       <ReactQuill
         id="text-body"
-        className="h-full w-full  rounded-xl border-2  border-zinc-700 bg-[#ffffffdb] pt-8 text-black dark:border-[#ffffffdb] dark:bg-zinc-900 dark:text-white"
+        className="h-full w-full  rounded-3xl border-2  border-zinc-700 bg-[#ffffffdb] pt-8 text-black dark:border-[#ffffffdb] dark:bg-zinc-900 dark:text-white"
         placeholder="Enter your story here"
         theme="snow"
         value={text.body ? text.body : bodyRef.current?.value}
