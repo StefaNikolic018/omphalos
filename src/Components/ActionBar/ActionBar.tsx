@@ -13,10 +13,10 @@ const index = ({
     [text]
   )
   return (
-    <div className="z-20 flex h-full w-[35%] flex-col flex-wrap rounded-xl border-2 border-zinc-700 bg-[#ffffff72]  p-2 text-center dark:border-[#ffffffdb] dark:bg-zinc-900">
+    <div className="z-20 flex h-full w-[35%] flex-col flex-wrap rounded-3xl border-2 border-zinc-700 bg-[#ffffff72]  p-2 text-center dark:border-[#ffffffdb] dark:bg-zinc-900">
       <input
         type="text"
-        className="rounded-xl bg-[#00000020] p-2 text-center text-xl text-black dark:bg-[#ffffff1e] dark:text-white"
+        className="rounded-3xl bg-[#00000020] p-2 text-center text-xl text-black dark:bg-[#ffffff1e] dark:text-white"
         placeholder="Enter search words separated by comma"
       />
       <h3 className="my-3">ALL WORDS COUNT: {length.toLocaleString()}</h3>
