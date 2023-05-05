@@ -29,7 +29,7 @@ const index = ({
       texts.map((text: IText) => (
         <SwiperSlide
           key={text.id}
-          className={`flex h-full cursor-pointer flex-row justify-center gap-2 rounded-xl border border-zinc-500 p-2 text-black opacity-90 shadow-sm transition-all hover:scale-[101%] hover:opacity-100 dark:border-0 ${
+          className={`flex h-full cursor-pointer flex-row justify-center gap-2 rounded-3xl border border-zinc-500 p-2 text-black opacity-90 shadow-sm transition-all hover:scale-[101%] hover:opacity-100 dark:border-0 ${
             selectedTextID === text.id
               ? 'border-orange-500'
               : ' border-white dark:border-zinc-700'
