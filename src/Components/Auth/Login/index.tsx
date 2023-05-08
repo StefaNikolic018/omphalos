@@ -14,7 +14,7 @@ const Login = () => {
         <Blob />
       </div>
       <div
-        className="absolute top-1/2 left-1/2 z-10 -translate-x-1/2 -translate-y-1/2 transform cursor-pointer rounded-xl border-2 border-zinc-900 bg-[#ffffffcc] py-2 px-2 shadow-xl transition-all duration-150 hover:bg-white dark:border-[#ffffffcc] dark:bg-zinc-800 dark:hover:bg-zinc-900"
+        className="absolute left-1/2 top-1/2 z-10 -translate-x-1/2 -translate-y-1/2 transform cursor-pointer rounded-3xl border-2 border-zinc-900 bg-[#ffffffcc] px-2 py-2 shadow-xl transition-all duration-150 hover:bg-white dark:border-[#ffffffcc] dark:bg-zinc-800 dark:hover:bg-zinc-900"
         onClick={googleLogin}
       >
         <FcGoogle className="text-3xl " />
