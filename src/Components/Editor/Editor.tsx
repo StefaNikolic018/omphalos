@@ -49,11 +49,14 @@ const index = ({ text }: { text: CurrentTextT }) => {
         defaultValue={text.name}
         placeholder="Name your story"
         className="absolute top-0 w-full rounded-t-3xl bg-[#00000020] px-3 py-1 text-center text-lg font-bold uppercase text-black focus-visible:outline-0 dark:bg-[#ffffff1e] dark:text-white"
+        value={text.name === nameRef.current?.value
+          ? nameRef.current?.value
+          : text.name}
         ref={nameRef}
         autoFocus
       />
       <button
-        className={`absolute right-[0.2%] top-9 py-2 px-3 text-zinc-800 ${
+        className={`absolute right-[0.2%] top-9 px-3 py-2 text-zinc-800 ${
           // isValid ?
           'cursor-pointer bg-orange-500 hover:bg-orange-400'
           // : 'bg-orange-400'
@@ -68,7 +71,11 @@ const index = ({ text }: { text: CurrentTextT }) => {
         className="h-full w-full  rounded-3xl border-2  border-zinc-700 bg-[#ffffffdb] pt-8 text-black dark:border-[#ffffffdb] dark:bg-zinc-900 dark:text-white"
         placeholder="Enter your story here"
         theme="snow"
-        value={text.body ? text.body : bodyRef.current?.value}
+        value={
+          text.body === bodyRef.current?.value
+            ? bodyRef.current?.value
+            : text.body
+        }
         ref={bodyRef}
       />
       {!isValid && (

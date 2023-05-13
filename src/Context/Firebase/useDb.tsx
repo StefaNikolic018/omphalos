@@ -1,16 +1,18 @@
-import React, { useState, useCallback } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React, { useState, useCallback } from 'react'
+import { v4 as uuidv4 } from 'uuid'
 
-import { initializeApp } from 'firebase/app';
+import { initializeApp } from 'firebase/app'
 // import { getAnalytics } from 'firebase/analytics';
 import {
+  doc,
+  onSnapshot,
   getFirestore,
   collection,
   getDocs,
-  addDoc,
-} from 'firebase/firestore/lite';
+  addDoc
+} from 'firebase/firestore'
 
-import { IText } from 'src/interfaces/texts';
+import { IText } from 'src/interfaces/texts'
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -25,25 +27,33 @@ const firebaseConfig = {
   storageBucket: import.meta.env.VITE_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: import.meta.env.VITE_APP_FIREBASE_SENDER_ID,
   appId: import.meta.env.VITE_APP_FIREBASE_APP_ID,
-  measurementId: import.meta.env.VITE_APP_MEASUREMENT_ID,
-};
+  measurementId: import.meta.env.VITE_APP_MEASUREMENT_ID
+}
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig)
 // Initialize Firestore
-const db = getFirestore(app);
+const db = getFirestore(app)
 // Initialize Analytics
 // const analytics = getAnalytics(app);
 
 export default function useDb() {
-  const [texts, setTexts] = useState<IText[] | unknown>([]);
+  const [texts, setTexts] = useState<IText[] | unknown>([])
 
-  const textsCollection = collection(db, 'texts');
+  const textsCollection = collection(db, 'texts')
   // Get all texts
   const getTexts = useCallback(async () => {
-    const textsSnapshot = await getDocs(textsCollection);
-    const textsList = textsSnapshot.docs.map((doc) => doc.data());
-    setTexts(textsList);
-  }, [setTexts]);
+    const unsub = onSnapshot(collection(db, 'texts'), (doc) => {
+      setTexts(doc.docs.map((doc) => doc.data()))
+
+      console.log(
+        'evo me: ',
+        doc.docs.map((doc) => doc.data())
+      )
+    })
+    // const textsSnapshot = await getDocs(textsCollection)
+    // const textsList = textsSnapshot.docs.map((doc) => doc.data())
+    // setTexts(textsList)
+  }, [setTexts])
 
   // TODO: Test the function and work on the the update function because the text needs to be onChange
   const addNewText = useCallback(
@@ -53,26 +63,26 @@ export default function useDb() {
           body: body,
           created: {
             seconds: Math.round(Date.now() / 1000),
-            nanoseconds: Math.round(Date.now() / 1000000),
+            nanoseconds: Math.round(Date.now() / 1000000)
           },
           id: uuidv4(),
           last_edited: {
             seconds: Math.round(Date.now() / 1000),
-            nanoseconds: Math.round(Date.now() / 1000000),
+            nanoseconds: Math.round(Date.now() / 1000000)
           },
           name: name,
           rhymes: [],
           searches: [],
           user_id: userId,
-          whole: body,
-        });
-        console.log('New text added!');
+          whole: body
+        })
+        console.log('New text added!')
       } catch (error) {
-        console.log('Error with adding a new text: ', error);
+        console.log('Error with adding a new text: ', error)
       }
     },
     []
-  );
+  )
 
-  return { app, db, getTexts, texts, addNewText };
+  return { app, db, getTexts, texts, addNewText }
 }

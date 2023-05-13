@@ -42,7 +42,11 @@ const index = ({
             })
           }
         >
-          <Slide text={text} />
+          <Slide
+            name={text.name}
+            body={text.body}
+            created={text.created.seconds}
+          />
         </SwiperSlide>
       )),
     [setSelectedText, selectedTextID, texts]
