@@ -1,5 +1,8 @@
 import React, { memo } from 'react'
 
+// TODO:
+// Create remove  button and add firestore query for it
+
 // import { IText } from 'src/interfaces/texts'
 import { formatText } from '../../../utils/formatText'
 
