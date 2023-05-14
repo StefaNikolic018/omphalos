@@ -19,7 +19,7 @@ const index = ({
         className="rounded-3xl bg-[#00000020] p-2 text-center text-xl text-black dark:bg-[#ffffff1e] dark:text-white"
         placeholder="Enter search words separated by comma"
       />
-      <h3 className="my-3">ALL WORDS COUNT: {length.toLocaleString()}</h3>
+      <h3 className="my-3">WORDS COUNT: {length.toLocaleString()}</h3>
     </div>
   )
 }
