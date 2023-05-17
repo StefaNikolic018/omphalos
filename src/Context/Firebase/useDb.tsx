@@ -5,11 +5,14 @@ import { initializeApp } from 'firebase/app'
 // import { getAnalytics } from 'firebase/analytics';
 import {
   doc,
+  query,
+  where,
   onSnapshot,
   getFirestore,
   collection,
   getDocs,
-  addDoc
+  addDoc,
+  deleteDoc
 } from 'firebase/firestore'
 
 import { IText } from 'src/interfaces/texts'
@@ -52,6 +55,15 @@ export default function useDb() {
     // setTexts(textsList)
   }, [setTexts])
 
+  const removeText = useCallback(async (id: string) => {
+    const text = query(textsCollection, where('id', '==', id))
+    const docSnap = await getDocs(text)
+    docSnap.forEach((doc) => {
+      console.log('Deleted: ', doc.data())
+      deleteDoc(doc.ref)
+    })
+  }, [])
+
   // TODO: Test the function and work on the the update function because the text needs to be onChange
   const addNewText = useCallback(
     async (name: string, body: string, userId: string) => {
@@ -81,5 +93,5 @@ export default function useDb() {
     []
   )
 
-  return { app, db, getTexts, texts, addNewText }
+  return { app, db, getTexts, texts, addNewText, removeText }
 }

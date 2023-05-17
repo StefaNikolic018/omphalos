@@ -49,9 +49,11 @@ const index = ({ text }: { text: CurrentTextT }) => {
         defaultValue={text.name}
         placeholder="Name your story"
         className="absolute top-0 w-full rounded-t-3xl bg-[#00000020] px-3 py-1 text-center text-lg font-bold uppercase text-black focus-visible:outline-0 dark:bg-[#ffffff1e] dark:text-white"
-        value={text.name === nameRef.current?.value
-          ? nameRef.current?.value
-          : text.name}
+        value={
+          text.name === nameRef.current?.value
+            ? nameRef.current?.value
+            : text.name
+        }
         ref={nameRef}
         autoFocus
       />

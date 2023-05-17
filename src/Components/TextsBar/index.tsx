@@ -28,12 +28,12 @@ const index = ({
 
   return (
     <div className="relative z-20 flex h-[20%] w-full flex-row flex-wrap items-center justify-center rounded-3xl border-2 border-zinc-700  bg-[#ffffff72] p-2 dark:border-[#ffffffdb] dark:bg-zinc-900">
-      <div className="absolute -right-5 top-3 z-10 flex flex-col gap-1 rounded-3xl border border-zinc-700 bg-[#ffffff72]/80 p-2 shadow-lg dark:border-[#ffffffdb] dark:bg-zinc-900/80">
+      <div className="absolute -right-[1.4%] top-7 z-10 flex flex-col gap-1 rounded-3xl border border-zinc-700 bg-[#ffffff72]/80 p-1 shadow-lg dark:border-[#ffffffdb] dark:bg-zinc-900/80">
         <BsFillPlusSquareFill
-          className=" duration-250 z-30 cursor-pointer rounded-2xl border border-zinc-900 bg-zinc-900 text-4xl text-orange-300 transition-all hover:scale-105 hover:text-orange-400 hover:shadow-md"
+          className=" duration-250 z-30 cursor-pointer rounded-2xl border border-zinc-900 bg-zinc-900 text-2xl text-orange-300 transition-all hover:scale-105 hover:text-orange-400 hover:shadow-md"
           onClick={resetText}
         />
-        <HiSearchCircle className=" duration-250 z-30 cursor-pointer rounded-2xl border border-zinc-900 bg-orange-100 text-4xl text-zinc-900 transition-all hover:scale-105 hover:bg-orange-200 hover:shadow-md" />
+        <HiSearchCircle className=" duration-250 z-30 cursor-pointer rounded-2xl border border-zinc-900 bg-orange-100 text-2xl text-zinc-900 transition-all hover:scale-105 hover:bg-orange-200 hover:shadow-md" />
       </div>
       <Swiper
         texts={texts}

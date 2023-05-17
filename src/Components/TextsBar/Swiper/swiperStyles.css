@@ -26,6 +26,7 @@
   color: #000;
   opacity: 1;
   background: rgba(0, 0, 0, 0.2);
+  z-index: 20;
 }
 
 .swiper-pagination-bullet-active {
