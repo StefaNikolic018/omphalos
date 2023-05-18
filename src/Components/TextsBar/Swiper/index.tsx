@@ -2,6 +2,9 @@ import React, { memo, useMemo, useCallback } from 'react'
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react'
 
+// TODO: Fix click on removing a text and it shows that text in the editor
+// maybe also change of the main section width on adding a new text
+
 // Import Swiper styles
 import 'swiper/css'
 import 'swiper/css/grid'
